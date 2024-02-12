@@ -1,0 +1,14 @@
+.mainheader {
+    background-color: #333;
+    padding: 20px;
+    margin: 0px;
+    }
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-item {
+    text-align: right;
+}

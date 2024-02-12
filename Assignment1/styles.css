@@ -6,7 +6,6 @@
 
 .flex-container {
     display: flex;
-    flex-direction: row;
 }
 
 .flex-item {
@@ -20,3 +19,16 @@
     color: white;
     text-align: center;
     }
+
+.about-us {
+    text-align: center;
+    background-color: #ddd;
+    padding: 20px;
+    margin: 20px;
+}
+
+.navigationbar{
+    justify-content: space-around;
+    width: 100%;
+    background-color: #333;
+}

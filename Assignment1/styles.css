@@ -12,3 +12,11 @@
 .flex-item {
     text-align: right;
 }
+
+.mainfooter {
+    background-color: #333;
+    padding: 10px;
+    margin: 0px;
+    color: white;
+    text-align: center;
+    }

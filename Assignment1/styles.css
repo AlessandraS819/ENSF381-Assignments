@@ -58,3 +58,22 @@
     padding: 20px;
     margin: 20px;
 }
+
+.product-list {
+    background-color: #ddd;
+    padding: 20px;
+    margin: 20px;
+}
+
+.individualproduct-styling {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.product-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}

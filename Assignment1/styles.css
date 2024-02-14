@@ -4,32 +4,23 @@
     margin: 0px;
     }
 
+    .mainheader-flextext {
+        text-align: right;
+        color: white;
+        width: 100%;
+        }  
 
-
-
-
-
-
-
-
-
-
-.flex-container {
-    display: flex;
-}
-
-
-
-
-
-
-
+    .mainheader-fleximg {
+        text-align: left;
+        width: 100%;
+    } 
 
 .mainfooter {
     background-color: #333;
     padding: 10px;
     margin: 0px;
     color: white;
+    text-align: center;
     }
 
 .about-us {
@@ -39,10 +30,16 @@
     margin: 20px;
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
 .navigationbar{
     justify-content: space-around;
     width: 100%;
     background-color: #333;
+    text-align: center;
+    color: white;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;

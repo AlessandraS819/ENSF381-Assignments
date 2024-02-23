@@ -24,6 +24,8 @@
     }
 
 .about-us {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     background-color: #ddd;
     padding: 20px;
@@ -47,33 +49,57 @@
 }
 
 .shop-now {
-    color: #4CAF50;
+    background-color: #4CAF50;
+    color: white;
     padding: 10px;
     margin: 20px;
     border-radius: 10px;
 }
 
 .customer-reviews {
+    display: flex;
+    flex-direction: column;
     background-color: #ddd;
     padding: 20px;
     margin: 20px;
 }
 
 .product-list {
+    display: flex;
+    flex-direction: row;
     background-color: #ddd;
     padding: 20px;
     margin: 20px;
 }
 
 .individualproduct-styling {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.individualproduct-item {
     background-color: #f9f9f9;
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
+    width: 200px;
+    align-content: center;
 }
 
 .product-image {
     max-width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+
+.price-text {
+    color: #007BFF;
+}
+
+.product-image:hover {
+    color: #ffffff;
 }

@@ -41,11 +41,16 @@
     width: 100%;
     background-color: #333;
     text-align: center;
-    color: white;
+    
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    
+    
+}
+.navigationbarlink{
+    color: white;
     font-size: 30px;
     text-decoration: none;
 }

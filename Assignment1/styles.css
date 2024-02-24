@@ -98,6 +98,8 @@
 
 .price-text {
     color: #007BFF;
+    font-weight: bold;
+    text-align: center;
 }
 
 .product-image:hover {

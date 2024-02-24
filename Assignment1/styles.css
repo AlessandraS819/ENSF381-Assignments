@@ -120,6 +120,7 @@
     padding: 10px;
     border-radius: 5px;
     margin: 10px;
+    color: white;
 }
 
 .add-to-cart-button:hover {
@@ -164,6 +165,7 @@
     border-radius: 5px;
     margin: 10px;
     opacity: 0.5;
+    color: white;
 }
 
 .login-button:hover {
@@ -179,117 +181,4 @@
 
 .signup-link:hover {
     text-decoration: underline;
-}
-
-@media screen and (min-width: 768px) {
-    .product-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-    }
-}
-
-/* Define styles for mobile screens */
-@media screen and (max-width: 767px) {
-    .product-list table {
-        display: block;
-        width: 100%; /* Ensure table occupies full width */
-        align-items: center;
-    }
-
-    
-    .navigationbar {
-        width: 100%; /* Ensure navigation bar spans the full width */
-        text-align: center; /* Center-align navigation links */
-    }
-
-    .navigationbarlink {
-        display: block;
-        margin-bottom: 10px; /* Add space between navigation links */
-    }
-    .product-list img {
-        max-width: 100%; /* Set maximum width to 100% */
-        height: auto; /* Ensure aspect ratio is maintained */
-    }
-
-    .individualproduct-item {
-        width: 100%; /* Set width to 100% to fit within the screen */
-        box-sizing: border-box; /* Include padding and border in the element's total width */
-        padding: 10px; /* Add padding to create space between items */
-    }
-
-    .product-image {
-        max-width: 100%; /* Set maximum width to 100% to fit within the container */
-        height: auto; /* Ensure aspect ratio is maintained */
-        display: block; /* Ensure the image behaves as a block-level element */
-        margin-bottom: 10px; /* Add margin to create space between the image and other elements */
-    }
-
-    .price-text {
-        margin-top: 5px; /* Add margin to create space between the price text and other elements */
-    }
-
-    button {
-        width: 100%; /* Set width to 100% to fill the container */
-        padding: 10px; /* Add padding to create a touch-friendly area */
-    }
-
-}
-
-@media screen and (max-width: 480px) {
-    
-    .product-list table {
-        display: block;
-        width: 100%; /* Ensure table occupies full width */
-    }
-
-    .product-list tr {
-        display: block;
-        width: 100%; /* Ensure table rows occupy full width */
-        margin-bottom: 20px; /* Add space between rows */
-        align-items: center;
-    }
-
-    .product-list td {
-        display: block;
-        width: 60%; /* Ensure table cells occupy full width */
-        margin-bottom: 20px;
-    }
-
-    .navigationbar {
-        width: 100%; /* Ensure navigation bar spans the full width */
-        text-align: center; /* Center-align navigation links */
-    }
-
-    .navigationbarlink {
-        display: block;
-        margin-bottom: 10px; /* Add space between navigation links */
-    }
-    .product-list img {
-        max-width: 100%; /* Set maximum width to 100% */
-        height: auto; /* Ensure aspect ratio is maintained */
-    }
-
-    .individualproduct-item {
-        width: 100%; /* Set width to 100% to fit within the screen */
-        box-sizing: border-box; /* Include padding and border in the element's total width */
-        padding: 10px; /* Add padding to create space between items */
-        margin-bottom: 20px; /* Add margin to create space between rows */
-    }
-
-    .product-image {
-        max-width: 100%; /* Set maximum width to 100% to fit within the container */
-        height: auto; /* Ensure aspect ratio is maintained */
-        display: block; /* Ensure the image behaves as a block-level element */
-        margin-bottom: 10px; /* Add margin to create space between the image and other elements */
-    }
-
-    .price-text {
-        margin-top: 5px; /* Add margin to create space between the price text and other elements */
-    }
-
-    button {
-        width: 100%; /* Set width to 100% to fill the container */
-        padding: 10px; /* Add padding to create a touch-friendly area */
-    }
 }

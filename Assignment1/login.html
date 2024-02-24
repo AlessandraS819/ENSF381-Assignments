@@ -24,20 +24,27 @@
     </div>
     </header>
     
-    <div>
-        <hr>
-        <a href="index.html" target =_self title = "Home page">Home </a> &emsp;
-        
-        <a href="products.html" target =_self title = "Products page">Products</a>&emsp;
-        
-        <a href="contact.html" target =_self title = "Contact page">Contacts</a> &emsp; 
-         
-        <a href="login.html" target =_blank title = "Login page">Login</a> &emsp;
-        <hr>
+    <div class = "flex-container">
         <!-- Navigation links go here-->
+        <hr>
+        <div class = "navigationbar">
+        <a href="index.html" target =_self title = "Home page">Home </a> &emsp;
+        </div>
+        <div class = "navigationbar">
+        <a href="products.html" target =_self title = "Products page">Products</a>&emsp;
+        </div>
+        <div class = "navigationbar">
+        <a href="contact.html" target =_self title = "Contact page">Contacts</a> &emsp; 
+        </div>
+        <div class = "navigationbar">
+        <a href="login.html" target =_blank title = "Login page">Login</a> &emsp;
+        </div>
+        <hr>
     </div>
     <main>
-        <form>
+        <form class = "login-form-text-content">
+            <br>
+
             <div>
                 <label for = "username"> Username:</label>
                 <input type = "text" id = "username" name = "username" placeholder = "Enter your username" required>
@@ -53,10 +60,10 @@
             <br>
 
             <div>
-                <button type = "submit">Login</button>
+                <button type = "submit" class = "login-button">Login</button>
             </div>
             <div>
-                <p>Don't have an account? <a href="">Sign Up<br></a></p>
+                <p>Don't have an account? <a href="" class = "signup-link">Sign Up<br></a></p>
             </div>
 
         </form>

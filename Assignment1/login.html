@@ -37,35 +37,36 @@
             <a  class = "navigationbarlink" href="contact.html" target =_self title = "Contact page" >Contacts</a> &emsp; 
         </div>  
         <div class = "navigationbar">
-            <a class = "navigationbarlink" href="login.html" target =_blank title = "Login page" >Login</a> &emsp;
+            <a class = "navigationbarlink" href="login.html" target =_self title = "Login page" >Login</a> &emsp;
         </div>
         <hr>
     </div>
     <main>
         <form class = "login-form-text-content">
             <br>
+            <div class = "flex-container-login">
+                <div >
+                    <label for = "username"> Username:</label>
+                    <input type = "text" id = "username" name = "username" placeholder = "Enter your username" required>
+                </div>
 
-            <div>
-                <label for = "username"> Username:</label>
-                <input type = "text" id = "username" name = "username" placeholder = "Enter your username" required>
+                <br>
+
+                <div >
+                    <label for = "pword"> Password:</label>
+                    <input type = "password" id = "pword" name = "pword" maxlength="16" placeholder = "Enter your password"  required>
+                    
+                </div>
+
+                <br>
+
+                <div >
+                    <button type = "submit" class = "login-button">Login</button>
+                </div>
+                <div >
+                    <p>Don't have an account? <a href="" class = "signup-link">Sign Up<br></a></p>
+                </div>
             </div>
-
-            <br>
-
-            <div>
-                <label for = "pword"> Password:</label>
-                <input type = "password" id = "pword" name = "pword" maxlength="16" placeholder = "Enter your password"  required>
-            </div>
-
-            <br>
-
-            <div>
-                <button type = "submit" class = "login-button">Login</button>
-            </div>
-            <div>
-                <p>Don't have an account? <a href="" class = "signup-link">Sign Up<br></a></p>
-            </div>
-
         </form>
     </main>
     <footer class = "mainfooter">

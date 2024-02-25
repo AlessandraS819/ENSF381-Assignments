@@ -129,6 +129,7 @@
 }
 
 .contact-information {
+    
     background-color: #ddd;
     padding: 20px;
     margin: 20px;
@@ -136,10 +137,18 @@
 }
 
 .contact-method {
+    
     background-color: #ddd;
     padding: 0px;
     margin: 0px;
     border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.flex-container-contact{
+    display:flex;
+    justify-content: center; /* Horizontally center the content */
+    
 }
 
 .social-media-links:hover {
@@ -172,6 +181,13 @@
 .login-button:hover {
     background-color: #45A049;
     opacity: 1.0;
+}
+.flex-container-login{
+    display:flex;
+    flex-direction:column;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center;
+    text-align: center;
 }
 
 .signup-link {

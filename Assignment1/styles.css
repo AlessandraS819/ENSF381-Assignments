@@ -76,7 +76,10 @@
     background-color: #ddd;
     padding: 20px;
     margin: 20px;
+    align-content:center;
+    
 }
+
 
 .individualproduct-styling {
     display: flex;

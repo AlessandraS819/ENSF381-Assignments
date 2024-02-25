@@ -112,8 +112,8 @@
     text-align: center;
 }
 
-.product-image:hover {
-    color: #ffffff;
+.individualproduct-item:hover {
+    background-color: #ffffff;
 }
 
 .add-to-cart-button {

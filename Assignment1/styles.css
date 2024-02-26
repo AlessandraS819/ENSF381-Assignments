@@ -177,7 +177,10 @@
     opacity: 0.5;
     color: white;
 }
-
+.login-form-text-content label {
+    display: block; /* Make labels block-level elements */
+    margin: 10px; /* Apply a margin of 10 pixels (top and bottom) and 0 pixels (left and right) */
+}
 .login-button:hover {
     background-color: #45A049;
     opacity: 1.0;

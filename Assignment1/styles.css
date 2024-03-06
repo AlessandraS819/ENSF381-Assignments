@@ -234,7 +234,7 @@
     opacity: 0.5;
     color: white;
 }
-.login-button:hover {
+.submit-button:hover {
     background-color: #45A049;
     opacity: 1.0;
 }

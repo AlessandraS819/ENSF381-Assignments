@@ -47,14 +47,14 @@
             <div class = "flex-container-signup">
                 <div >
                     <label for = "username">Username:</label>
-                    <input type = "text" id = "username" name = "username" minlength="3" maxlength = "20" placeholder = "Enter your username" required>
+                    <input type = "text" id = "username" name = "username"  maxlength = "20" placeholder = "Enter your username" required>
                 </div>
 
                 <br>
 
                 <div >
                     <label for = "pword">Password:</label>
-                    <input type = "password" id = "pword" name = "pword" minlength="8" maxlength="16" placeholder = "Enter your password"  required>
+                    <input type = "password" id = "pword" name = "pword"  maxlength="16" placeholder = "Enter your password"  required>
                     
                 </div>
 
@@ -62,7 +62,7 @@
                 
                 <div >
                     <label for = "pword">Confirm Password:</label>
-                    <input type = "password" id = "confirm-pword" name = "confirm-pword" minlength="8" maxlength="16" placeholder = "Confirm your password"  required>
+                    <input type = "password" id = "confirm-pword" name = "confirm-pword"  maxlength="16" placeholder = "Confirm your password"  required>
                     
                 </div>
                 <br>
@@ -75,12 +75,66 @@
                 <br>
 
                 <div >
-                    <button type = "submit" class = "submit-button">Signup</button>
+                    <button onclick="signup()" type = "submit" class = "submit-button">Signup</button>
+                    
                 </div>
                 
             </div>
             
         </form>
+        <script>
+            function signup(){
+                var username = document.getElementById("username").value;
+                var password = document.getElementbyId("pword").value;
+                var confirmPassword = document.getElementbyId("confirm-pword").value;
+                var email = document.getElementById("email").value;
+                // regular expression for validating elements
+                var usernameRegex = /^[A-Za-z][A-Za-z0-9_-]{2,19}$/;
+                //^: Asserts the start of the string.
+                //[a-zA-Z]: Matches any letter (case insensitive).
+                // [A-Za-z0-9_-]: Matches any alphanumeric character (letters A-Z, numbers 0-9), underscore (_), or hyphen (-).
+                // {2,19}: Specifies the minimum and maximum length of the password (between 3 and 20 characters).
+                // $: Asserts the end of the string.
+                var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+\[\]{}|;:'",.<>?/`~])[A-Za-z\d!@#$%^&*()-_=+\[\]{}|;:'",.<>?/`~]{8,16}$/;
+                //^: Asserts the start of the string.
+                // (?=.*[a-z]): Positive lookahead assertion that checks if the string contains at least one lowercase letter (a-z).
+                // (?=.*[A-Z]): Positive lookahead assertion that checks if the string contains at least one uppercase letter (A-Z).
+                // (?=.*\d): Positive lookahead assertion that checks if the string contains at least one digit (0-9).
+                // (?=.*[!@#$%^&*()-_=+\[\]{}|;:'",.<>?/~])`: Positive lookahead assertion that checks if the string contains at least one special character from the specified set of characters.
+                // [A-Za-z\d!@#$%^&*()-_=+\[\]{}|;:'",.<>?/~]{8,16}`: Matches between 8 and 16 characters, including letters (uppercase and lowercase), digits, and the specified special characters.
+                // $: Asserts the end of the string.
+                var emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|io)$/;
+
+                // the message that is going to be displayed
+                var message = "";
+                var messageBox = document.getElementById("messagebox");
+
+                if (!usernameRegex.test(username)) {
+                    message += "Check the username. ";
+                }
+                if (!passwordRegex.test(password)) {
+                    message += "Check the password. ";
+                }
+                if (password !== confirmPassword) {
+                    message += "Passwords don't match. ";
+                }
+                if (!emailRegex.test(email)) {
+                    message += "Check the email. ";
+                }
+
+                // Clear previous content
+                messageBox.innerHTML = "";
+
+                // Display message
+                if (message !== "") {
+                    var messageTextNode = document.createTextNode(message);
+                    messageBox.appendChild(messageTextNode);
+                } else {
+                    messageBox.textContent = "Signup successful!";
+                }
+
+            }
+        </script>
         <div id = "messagebox">
             <p></p>
         </div>

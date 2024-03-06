@@ -155,6 +155,8 @@
 .social-media-links:hover {
     color: #007BFF;
 }
+
+
 /* login.html css */
 .login-form-text-content {
     background-color: #ddd;
@@ -203,7 +205,27 @@
 .signup-link:hover {
     text-decoration: underline;
 }
+
+
 /* signup.html css */
+.signup-form-text-content {
+    background-color: #ddd;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.signup-form-text-content label {
+    display: block; /* Make labels block-level elements */
+    margin: 10px; /* Apply a margin of 10 pixels (top and bottom) and 0 pixels (left and right) */
+}
+.flex-container-signup{
+    display:flex;
+    flex-direction:column;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center;
+    text-align: center;
+}
 .submit-button {
     background-color: #4CAF50;
     padding: 10px;

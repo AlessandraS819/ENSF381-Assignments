@@ -24,7 +24,7 @@
     </div>
     </header>
     
-    <div class = "flex-container">
+    <nav class = "flex-container">
         <!-- Navigation links go here-->
         <hr>
         <div class = "navigationbar">
@@ -40,33 +40,46 @@
             <a class = "navigationbarlink" href="login.html" target =_self title = "Login page" >Login</a> &emsp;
         </div>
         <hr>
-    </div>
+    </nav>
     <main>
         <form class = "login-form-text-content">
             <br>
             <div class = "flex-container-login">
                 <div >
                     <label for = "username"> Username:</label>
-                    <input type = "text" id = "username" name = "username" placeholder = "Enter your username" required>
+                    <input type = "text" id = "username" name = "username" minlength="3" maxlength = "20" placeholder = "Enter your username" required>
                 </div>
 
                 <br>
 
                 <div >
                     <label for = "pword"> Password:</label>
-                    <input type = "password" id = "pword" name = "pword" maxlength="16" placeholder = "Enter your password"  required>
+                    <input type = "password" id = "pword" name = "pword" minlength="8" maxlength="16" placeholder = "Enter your password"  required>
                     
                 </div>
-                
 
+                <br>
+                <div >
+                    <label for = "email"> Password:</label>
+                    <input type = "text" id = "email" name = "email" placeholder = "Enter your email"  required>
+                    
+                </div>
+
+                <br>
+                <div >
+                    <label for = "pword"> Confirm Password:</label>
+                    <input type = "password" id = "confirm-pword" name = "confirm-pword" minlength="8" maxlength="16" placeholder = "Confirm your password"  required>
+                    
+                </div>
                 <br>
 
                 <div >
-                    <button type = "submit" class = "login-button">Login</button>
+                    <button type = "submit" class = "submit-button">Signup</button>
                 </div>
-                <div >
-                    <p>Don't have an account? <a href="signup.html" class = "signup-link">Sign Up<br></a></p>
-                </div>
+                
+            </div>
+            <div id = "messagebox">
+                <p></p>
             </div>
         </form>
     </main>

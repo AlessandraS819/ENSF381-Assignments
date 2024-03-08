@@ -62,7 +62,7 @@
                 <br>
 
                 <div >
-                    <button onclick="validateLogin()" type = "submit" class = "login-button">Login</button>
+                    <button onclick="validateLogin()" type = "button" class = "login-button">Login</button>
                 </div>
                 <div >
                     <p>Don't have an account? <a href="signup.html" class = "signup-link">Sign Up<br></a></p>
@@ -71,7 +71,7 @@
         </form>
         
         <script>
-            function validateLogin(){
+            async function validateLogin(){
                 var username = document.getElementById("username").value;
                 var password = document.getElementById("pword").value;
                 
@@ -87,10 +87,18 @@
 
                 // placing the CSS 
                 var messageBox = document.getElementById("loginmessagebox");
-                messageBox.style.border = "2px"; // Border of 2px solid black
+                messageBox.style.border = "2px solid black"; // Border of 2px solid black
                 messageBox.style.backgroundColor = "#f9f9f9"; // Background color of #f9f9f9
                 messageBox.style.padding = "10px"; // Padding of 10px
                 messageBox.style.margin = "20px"; // Margin of 20px
+                
+                try{
+                const fetchingInfo = await fetch('https://jsonplaceholder.typicode.com/users');
+                const data = await response.json();
+                console.log('fetched data:', data); 
+                }catch(error){
+                    alert("Error API call was unsuccessful")
+                }
 
                     
 

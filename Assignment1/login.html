@@ -69,17 +69,29 @@
                 </div>
             </div>
         </form>
-        <div id=" loginMessageBox">
-            <p></p>
-        </div>
+        
         <script>
             function validateLogin(){
                 var username = document.getElementById("username").value;
                 var password = document.getElementById("pword").value;
                 
                 var message = "";
-                var messageBox = document.getElementById("loginmessagebox");
+                var loginMessageBox = document.createElement("div");
+                loginMessageBox.setAttribute("id", "loginmessagebox");// Set the id attribute of the div element
+
                 
+                var paragraph = document.createElement("p");// Create the p element
+                loginMessageBox.appendChild(paragraph);// Append the p element to the div element
+                var footer = document.querySelector("footer");
+                document.body.insertBefore(loginMessageBox, footer);
+
+                // placing the CSS 
+                var messageBox = document.getElementById("loginmessagebox");
+                messageBox.style.border = "2px"; // Border of 2px solid black
+                messageBox.style.backgroundColor = "#f9f9f9"; // Background color of #f9f9f9
+                messageBox.style.padding = "10px"; // Padding of 10px
+                messageBox.style.margin = "20px"; // Margin of 20px
+
                     
 
             }  

@@ -94,25 +94,24 @@
                 
                 try{
                     const fetchingInfo = await fetch('https://jsonplaceholder.typicode.com/users');
-                    const usersData = await response.json();
-                    console.log('fetched data:', usersData); 
-                    const user = data.find(user => user.name === username && user.email === password);
-                    if (user) {
+                    const usersData = await fetchingInfo.json(); //synchronously retrieves and parses the JSON response from the API call and stores the resulting JavaScript object (representing the user data) in the usersData variable for further processing in your code.
+                    const user = usersData.find(user => user.username === username );
+                    const userp = usersData.find(user => user.email === password);
+                    console.log("Found user:", user);
+                    console.log("Found user:", username);
+                    console.log("Found user:", email);
+                    console.log("Found user:", userp);
+                    if ((user === username) && (userp === password)) {
                         loginmessageBox.firstChild.textContent ="Login successful!";
                     } else {
-                        loginmessageBox.firstChild.textContent ="Login successful!";
+                        loginmessageBox.firstChild.textContent ="Invalid username or user email. Please try again";
                     }
                 }catch(error){
-                    alert("Error API call was unsuccessful")
-                }
-
-                    
+                    alert("Error: API call was unsuccessful")
+                }       
 
             }  
-            function showMessage(message) {
-                var loginMessageBox = document.getElementById("loginmessagebox");
-                loginMessageBox.firstChild.textContent = message;
-            }
+
                     
         </script>
     </main>

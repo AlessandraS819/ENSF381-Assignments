@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Login
+        Signup 
     </title>
     <link rel = "stylesheet" href = "styles.css">
 </head>
@@ -84,13 +84,13 @@
         </form>
         
         <div id = "messagebox">
-            <p></p>
+
         </div>
         <script>
             function validateSignupInfo(){
                 var username = document.getElementById("username").value;
-                var password = document.getElementbyId("pword").value;
-                var confirmPassword = document.getElementbyId("confirm-pword").value;
+                var password = document.getElementById("pword").value;
+                var confirmPassword = document.getElementById("confirm-pword").value;
                 var email = document.getElementById("email").value;
                 
                 // regular expression for validating elements
@@ -120,32 +120,31 @@
                 console.log(confirmPassword);
                 console.log(email);
                 
-                if ((usernameRegex.test(username))=== false){message += "Check the username. \n"}
-                
-                if ((passwordRegex.test(password))=== false){
-
+                if ((usernameRegex.test(username))=== false){
+                    message += "Check the username. \n"
                 }
-                if (!passwordRegex.test(password)) {
+    
+                if ((passwordRegex.test(password)) === false) {
                     message += "Check the password.\n";
                 }
                 if (password !== confirmPassword) {
-                    message += "Passwords don't match.\n ";
+                    message += "Passwords don't match.\n";
                 }
-                if (!emailRegex.test(email)) {
+                if ((emailRegex.test(email)) === false) {
                     message += "Check the email. \n";
                 }
                 console.log(message);
-                // Clear previous content
-                messageBox.innerHTML = "";
 
                 // Display message
                 if (message !== "") {
-                    var messageTextNode = document.createTextNode(message);
-                    messageBox.appendChild(messageTextNode);
-                } else {
-                    messageBox.textContent = "Signup successful!";
-                }
+                    messageBox.textContent= message;
+                    return false;
 
+                } else {
+                    message = "Signup succcessful";
+                    console.log(message);
+                    messageBox.textContent= message;
+                }
 
             }
                 

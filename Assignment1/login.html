@@ -80,10 +80,10 @@
                 loginMessageBox.setAttribute("id", "loginmessagebox");// Set the id attribute of the div element
 
                 
-                var paragraph = document.createElement("p");// Create the p element
-                loginMessageBox.appendChild(paragraph);// Append the p element to the div element
+                var createPTag = document.createElement("p");// Create the p element
+                loginMessageBox.appendChild(createPTag);// Append the p element to the div element
                 var footer = document.querySelector("footer");
-                document.body.insertBefore(loginMessageBox, footer);
+                document.body.insertBefore(loginMessageBox, footer); // insert the div element before the footer
 
                 // placing the CSS 
                 var messageBox = document.getElementById("loginmessagebox");
@@ -93,9 +93,9 @@
                 messageBox.style.margin = "20px"; // Margin of 20px
                 
                 try{
-                const fetchingInfo = await fetch('https://jsonplaceholder.typicode.com/users');
-                const data = await response.json();
-                console.log('fetched data:', data); 
+                    const fetchingInfo = await fetch('https://jsonplaceholder.typicode.com/users');
+                    const usersData = await response.json();
+                    console.log('fetched data:', usersData); 
                 }catch(error){
                     alert("Error API call was unsuccessful")
                 }
@@ -103,16 +103,11 @@
                     
 
             }  
-            async function fetchData(){
-                try{
-                const fetchingInfo = await fetch('https://jsonplaceholder.typicode.com/users');
-                const data = await response.json();
-                console.log('fetched data:', data); 
-                }catch(error){
-                    alert("Error API call was unsuccessful")
-                }
-
+            function showMessage(message) {
+                var loginMessageBox = document.getElementById("loginmessagebox");
+                loginMessageBox.firstChild.textContent = message;
             }
+                    
         </script>
     </main>
     <footer class = "mainfooter">

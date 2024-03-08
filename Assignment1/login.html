@@ -95,11 +95,11 @@
                 try{
                     const fetchingInfo = await fetch('https://jsonplaceholder.typicode.com/users');
                     const usersData = await fetchingInfo.json(); //synchronously retrieves and parses the JSON response from the API call and stores the resulting JavaScript object (representing the user data) in the usersData variable for further processing in your code.
-                    const user = usersData.find(user => user.username === username && user.email === password);
+                    const user = usersData.find(user => (user.username === username) && (user.email === password));
                     console.log("Found user:", user.username);
                     console.log("Found user:", username);
                     console.log("Found user:", user.email);
-                    console.log("Found user:", userp);
+                    console.log("Found user:", email); // trying to see what the problem is
                     if ((user.username === username) && (user.email === password)) {
                         loginmessageBox.firstChild.textContent ="Login successful!";
                     } else {

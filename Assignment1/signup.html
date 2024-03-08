@@ -47,14 +47,14 @@
             <div class = "flex-container-signup">
                 <div >
                     <label for = "username">Username:</label>
-                    <input type = "text" id = "username" name = "username"  maxlength = "20" placeholder = "Enter your username" required>
+                    <input type = "text" id = "username" name = "username"  maxlength = "20" placeholder = "Enter your username" required autocomplete="username">
                 </div>
 
                 <br>
 
                 <div >
                     <label for = "pword">Password:</label>
-                    <input type = "password" id = "pword" name = "pword"  maxlength="16" placeholder = "Enter your password"  required>
+                    <input type = "password" id = "pword" name = "pword"  maxlength="16" placeholder = "Enter your password"  required autocomplete="new-password">
                     
                 </div>
 
@@ -62,40 +62,45 @@
                 
                 <div >
                     <label for = "pword">Confirm Password:</label>
-                    <input type = "password" id = "confirm-pword" name = "confirm-pword"  maxlength="16" placeholder = "Confirm your password"  required>
+                    <input type = "password" id = "confirm-pword" name = "confirm-pword"  maxlength="16" placeholder = "Confirm your password"  required autocomplete="new-password">
                     
                 </div>
                 <br>
                 <div >
                     <label for = "email">Email:</label>
-                    <input type = "text" id = "email" name = "email" placeholder = "Enter your email"  required>
+                    <input type = "text" id = "email" name = "email" placeholder = "Enter your email"  required autocomplete="email">
                     
                 </div>
 
                 <br>
 
                 <div >
-                    <button onclick="signup()" type = "submit" class = "submit-button">Signup</button>
+                    <button onclick="validateSignupInfo()" type = "submit" class = "submit-button">Signup</button>
                     
                 </div>
                 
             </div>
             
         </form>
+        
+        <div id = "messagebox">
+            <p></p>
+        </div>
         <script>
-            function signup(){
+            function validateSignupInfo(){
                 var username = document.getElementById("username").value;
                 var password = document.getElementbyId("pword").value;
                 var confirmPassword = document.getElementbyId("confirm-pword").value;
                 var email = document.getElementById("email").value;
+                
                 // regular expression for validating elements
-                var usernameRegex = /^[A-Za-z][A-Za-z0-9_-]{2,19}$/;
+                var usernameRegex = /^[A-Za-z][A-Za-z0-9_\-]{2,19}$/;
                 //^: Asserts the start of the string.
                 //[a-zA-Z]: Matches any letter (case insensitive).
                 // [A-Za-z0-9_-]: Matches any alphanumeric character (letters A-Z, numbers 0-9), underscore (_), or hyphen (-).
                 // {2,19}: Specifies the minimum and maximum length of the password (between 3 and 20 characters).
                 // $: Asserts the end of the string.
-                var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+\[\]{}|;:'",.<>?/`~])[A-Za-z\d!@#$%^&*()-_=+\[\]{}|;:'",.<>?/`~]{8,16}$/;
+                var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-=+\[\]{}|;:'",.<>?/`~])[A-Za-z\d!@#$%^&*()\-=+\[\]{}|;:'",.<>?/`~]{8,16}$/;
                 //^: Asserts the start of the string.
                 // (?=.*[a-z]): Positive lookahead assertion that checks if the string contains at least one lowercase letter (a-z).
                 // (?=.*[A-Z]): Positive lookahead assertion that checks if the string contains at least one uppercase letter (A-Z).
@@ -108,20 +113,28 @@
                 // the message that is going to be displayed
                 var message = "";
                 var messageBox = document.getElementById("messagebox");
+                //The javascipt regex object provides a method called test that accepts a string input and tests it against 
+                // the regular expression.  If the input string it a positive match, the test method will return true. If not will return false.
+                console.log(username);
+                console.log(password);
+                console.log(confirmPassword);
+                console.log(email);
+                
+                if ((usernameRegex.test(username))=== false){message += "Check the username. \n"}
+                
+                if ((passwordRegex.test(password))=== false){
 
-                if (!usernameRegex.test(username)) {
-                    message += "Check the username. ";
                 }
                 if (!passwordRegex.test(password)) {
-                    message += "Check the password. ";
+                    message += "Check the password.\n";
                 }
                 if (password !== confirmPassword) {
-                    message += "Passwords don't match. ";
+                    message += "Passwords don't match.\n ";
                 }
                 if (!emailRegex.test(email)) {
-                    message += "Check the email. ";
+                    message += "Check the email. \n";
                 }
-
+                console.log(message);
                 // Clear previous content
                 messageBox.innerHTML = "";
 
@@ -133,11 +146,11 @@
                     messageBox.textContent = "Signup successful!";
                 }
 
+
             }
+                
+            
         </script>
-        <div id = "messagebox">
-            <p></p>
-        </div>
     </main>
     <footer class = "mainfooter">
     <!-- Copyright notice goes here -->

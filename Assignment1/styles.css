@@ -205,6 +205,12 @@
 .signup-link:hover {
     text-decoration: underline;
 }
+#loginMessageBox{
+    border: 2px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 20px;
+}
 
 
 /* signup.html css */

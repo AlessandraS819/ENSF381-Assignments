@@ -118,7 +118,7 @@
                     }catch(error){
                         alert("Error: API call was unsuccessful")
                         tries++;
-                        await new Promise(resolve => setTimeout(resolve, 250* Math.pow(2, tries)));
+                        await new Promise(resolve => setTimeout(resolve, 250* Math.pow(2, tries))); // this is to make it retry fetching the data a maximum of 5 times
                     }       
                 }
                 

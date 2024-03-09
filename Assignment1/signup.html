@@ -84,6 +84,7 @@
         </form>
         
         <script>
+            var messageBoxCreated = false; 
             function validateSignupInfo(){
                 var username = document.getElementById("username").value;
                 var password = document.getElementById("pword").value;
@@ -109,22 +110,6 @@
 
                 // the message that is going to be displayed
                 var message = "";
-                var signupMessageBox = document.createElement("div");
-                signupMessageBox.setAttribute("id", "messagebox");// Set the id attribute of the div element
-
-                
-                var paragraph = document.createElement("p");// Create the p element
-                signupMessageBox.appendChild(paragraph);// Append the p element to the div element
-                var footer = document.querySelector("footer");
-                document.body.insertBefore(signupMessageBox, footer);
-
-                // placing the CSS 
-                var messageBox = document.getElementById("messagebox");
-                messageBox.style.border = "2px solid black"; // Border of 2px solid black
-                messageBox.style.backgroundColor = "#f9f9f9"; // Background color of #f9f9f9
-                messageBox.style.padding = "10px"; // Padding of 10px
-                messageBox.style.margin = "20px"; // Margin of 20px
-                
                 //The javascipt regex object provides a method called test that accepts a string input and tests it against 
                 // the regular expression.  If the input string it a positive match, the test method will return true. If not will return false.
                 console.log(username);
@@ -146,16 +131,36 @@
                     message += "Check the email. \n";
                 }
                 console.log(message);
+                
+                if (messageBoxCreated === false){
+                    var signupMessageBox = document.createElement("div");
+                    signupMessageBox.setAttribute("id", "messagebox");// Set the id attribute of the div element
+                    var paragraph = document.createElement("p");// Create the p element
+                    signupMessageBox.appendChild(paragraph);// Append the p element to the div element
+                    var footer = document.querySelector("footer");
+                    footer.insertAdjacentElement("beforebegin", signupMessageBox);
+        
+                    // placing the CSS 
+                    var messageBox = document.getElementById("messagebox");
+                    messageBox.style.border = "2px solid black"; // Border of 2px solid black
+                    messageBox.style.backgroundColor = "#f9f9f9"; // Background color of #f9f9f9
+                    messageBox.style.padding = "10px"; // Padding of 10px
+                    messageBox.style.margin = "20px";
+                    messageBoxCreated = true; // Set flag to true after applying margin
 
-                // Display message
+                }
+                
+                var updatingMessage = document.getElementById("messagebox");
+                //Display message
                 if (message !== "") {
-                    messageBox.firstChild.textContent = message;
+                    updatingMessage.firstChild.textContent = message;
                     return false;
+                    
 
                 } else {
-                    message = "Signup succcessful";
+                    message = "Signup succcessful!";
                     console.log(message);
-                    messageBox.firstChild.textContent = message;
+                    updatingMessage.firstChild.textContent = message;
                 }
 
             }

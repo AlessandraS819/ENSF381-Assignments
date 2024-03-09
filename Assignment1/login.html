@@ -71,44 +71,57 @@
         </form>
         
         <script>
+            var createdbox = false;
             async function validateLogin(){
                 var username = document.getElementById("username").value;
                 var password = document.getElementById("pword").value;
                 
                 var message = "";
-                var loginMessageBox = document.createElement("div");
-                loginMessageBox.setAttribute("id", "loginmessagebox");// Set the id attribute of the div element
+                if (createdbox === false){
+                    var loginMessageBox = document.createElement("div");
+                    loginMessageBox.setAttribute("id", "loginmessagebox");// Set the id attribute of the div element
 
+                    
+                    var createPTag = document.createElement("p");// Create the p element
+                    loginMessageBox.appendChild(createPTag);// Append the p element to the div element
+                    var footer = document.querySelector("footer");
+                    document.body.insertBefore(loginMessageBox, footer); // insert the div element before the footer
+
+                    // placing the CSS 
+                    var loginmessageBox = document.getElementById("loginmessagebox");
+                    loginmessageBox.style.border = "2px solid black"; // Border of 2px solid black
+                    loginmessageBox.style.backgroundColor = "#f9f9f9"; // Background color of #f9f9f9
+                    loginmessageBox.style.padding = "10px"; // Padding of 10px
+                    loginmessageBox.style.margin = "20px"; // Margin of 20px
+                }
                 
-                var createPTag = document.createElement("p");// Create the p element
-                loginMessageBox.appendChild(createPTag);// Append the p element to the div element
-                var footer = document.querySelector("footer");
-                document.body.insertBefore(loginMessageBox, footer); // insert the div element before the footer
-
-                // placing the CSS 
-                var loginmessageBox = document.getElementById("loginmessagebox");
-                loginmessageBox.style.border = "2px solid black"; // Border of 2px solid black
-                loginmessageBox.style.backgroundColor = "#f9f9f9"; // Background color of #f9f9f9
-                loginmessageBox.style.padding = "10px"; // Padding of 10px
-                loginmessageBox.style.margin = "20px"; // Margin of 20px
+                var tries = 0;
+                while (tries <= 5){
                 
-                try{
-                    const fetchingInfo = await fetch('https://jsonplaceholder.typicode.com/users');
-                    const usersData = await fetchingInfo.json(); //synchronously retrieves and parses the JSON response from the API call and stores the resulting JavaScript object (representing the user data) in the usersData variable for further processing in your code.
-                    const user = usersData.find(user => (user.username === username) && (user.email === password));
-                    console.log("Found user:", user.username);
-                    console.log("Found user:", username);
-                    console.log("Found user:", user.email);
-                    console.log("Found user:", email); // trying to see what the problem is
-                    if ((user.username === username) && (user.email === password)) {
-                        loginmessageBox.firstChild.textContent ="Login successful!";
-                    } else {
-                        loginmessageBox.firstChild.textContent ="Invalid username or user email. Please try again";
-                    }
-                }catch(error){
-                    alert("Error: API call was unsuccessful")
-                }       
-
+                    try{
+                        const fetchingInfo = await fetchWithRetries('https://jsonplaceholder.typicode.com/users');
+                        if((fetchingInfo.ok)=== true){
+                            const usersData = await fetchingInfo.json(); //synchronously retrieves and parses the JSON response from the API call and stores the resulting JavaScript object (representing the user data) in the usersData variable for further processing in your code.
+                            const user = usersData.find(user => (user.username === username) && (user.email === password));
+                            var modifyMessage = document.getElementById("loginmessagebox");
+                            console.log("Found user:", user.username);
+                            console.log("Found user:", username);
+                            console.log("Found user:", user.email);
+                            console.log("Found user:", email); // trying to see what the problem is
+                            if ((user.username === username) && (user.email === password)) {
+                                modifyMessage.firstChild.textContent ="Login successful!";
+                            } else {
+                                modifyMessage.firstChild.textContent ="Invalid username or user email. Please try again";
+                            }
+                        }
+                        
+                    }catch(error){
+                        alert("Error: API call was unsuccessful")
+                        tries++;
+                        await new Promise(resolve => setTimeout(resolve, 250* Math.pow(2, tries)));
+                    }       
+                }
+                
             }  
 
                     

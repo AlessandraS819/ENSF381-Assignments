@@ -54,7 +54,7 @@
 
                 <div >
                     <label for = "pword">Password:</label>
-                    <input type = "password" id = "pword" name = "pword" maxlength="16" placeholder = "Enter your password"  required autocomplete="current-password">
+                    <input type = "password" id = "pword" name = "pword" placeholder = "Enter your password"  required autocomplete="current-password">
                     
                 </div>
                 
@@ -97,33 +97,34 @@
                 
                 var tries = 0;
                 
-                while (tries <= 5){
-                
-                    try{
-                        const fetchingInfo = await fetchWithRetries('https://jsonplaceholder.typicode.com/users');
-                        const usersData = await fetchingInfo.json();
-                        console.log(usersData)
-                        
-                        const user = usersData.find(user => (user.username === username) && (user.email === password));
-                        var modifyMessage = document.getElementById("loginmessagebox");
-                        console.log("Found user:", user.username);
-                        console.log("Found user:", username);
-                        console.log("Found user:", user.email);
-                        console.log("Found user:", email); // trying to see what the problem is
-                        if ((user.username === username) && (user.email === password)) {
-                            modifyMessage.firstChild.textContent ="Login successful!";
-                        } else {
-                            modifyMessage.firstChild.textContent ="Invalid username or user email. Please try again";
-                        }
+                try{
+                    const fetchingInfo = await fetch('https://jsonplaceholder.typicode.com/users');
+                    const usersData = await fetchingInfo.json();
                     
+                    const user = usersData.find(user => user.username === username);
+                    const userp = usersData.find(user => user.email === password);
+                    var modifyMessage = document.getElementById("loginmessagebox");
+                    //for debugging purposes
+                    // console.log("Found user:", user? user.username: "User's username not found");
+                    // console.log("compare username:", username);
+                    // console.log("Found user-email:", userp? userp.email: "User email not found");
+                    // console.log("compare email:", password); // trying to see what the problem is
+                    if ((user && (user.username === username)) && (userp && (userp.email === password))) {
+                        modifyMessage.firstChild.textContent ="Login successful!";
                         
-                    }catch(error){
-                        alert("Error: API call was unsuccessful")
-                        tries++;
-                        await new Promise(resolve => setTimeout(resolve, 250* Math.pow(2, tries))); // this is to make it retry fetching the data a maximum of 5 times
-                    }       
-                }
+                    } else {
+                        modifyMessage.firstChild.textContent ="Invalid username or user email. Please try again";
+                    }
+                
+                    
+                }catch(error){
+                    //console.log("Fetching error: ", error);
+                    alert("Error: API call was unsuccessful")
+                    
+                    
+                }       
             }
+            
     
               
 

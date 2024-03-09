@@ -46,13 +46,13 @@
                         <img src = "HydratingSerum.jpeg" height="200" alt = "Hydrating Serum" class = "product-image">
                         <p><h4>Hydrating Serum</h4></p>
                         <p class = "price-text">$44</p>
-                        <button class = "add-to-cart-button">Add to Cart</button>
+                        <button onclick = "addToCart('Hydrating Serum', 44)" class = "add-to-cart-button">Add to Cart</button>
                     </td>
                     <td class = "individualproduct-item">
                         <img src = "PeachLipstickMatte.jpeg" height="200" alt = "Peach Lipstick Matte" class = "product-image">
                         <p><h4>Peach Matte Lipstick</h4></p>
                         <p class = "price-text">$29</p>
-                        <button class = "add-to-cart-button">Add to Cart</button>
+                        <button onclick = "addToCart('Peach Lipstick Matte', 29)" class = "add-to-cart-button">Add to Cart</button>
                     </td>
                 </tr>
                 <tr class = "individualproduct-styling">
@@ -60,13 +60,13 @@
                         <img src = "BlackEyeliner.jpeg" height="200" alt = "Black Eyeliner" class = "product-image">
                         <p><h4>Black Eyeliner</h4></p>
                         <p class = "price-text">$20</p>
-                        <button class = "add-to-cart-button">Add to Cart</button>
+                        <button onclick = "addToCart('Black Eyeliner', 20)" class = "add-to-cart-button">Add to Cart</button>
                     </td>
                     <td class = "individualproduct-item">
                         <img src = "AntiAgingRetinol.jpeg" height="200" alt = "Anti Aging Retinol" class = "product-image">
                         <p><h4>Anti Aging Retinol</h4></p>
                         <p class = "price-text">$26</p>
-                        <button class = "add-to-cart-button">Add to Cart</button>
+                        <button onclick = "addToCart('Anti Aging Retinol', 26)" class = "add-to-cart-button">Add to Cart</button>
                     </td>
                 </tr>
                 <tr class = "individualproduct-styling">
@@ -74,13 +74,13 @@
                         <img src = "Foundation.jpeg" height="200" alt = "Foundation" class = "product-image">
                         <p><h4>Foundation</h4></p>
                         <p class = "price-text">$50</p>
-                        <button class = "add-to-cart-button">Add to Cart</button>
+                        <button onclick = "addToCart('Foundation', 50)" class = "add-to-cart-button">Add to Cart</button>
                     </td>
                     <td class = "individualproduct-item">
                         <img src = "CreamJellyCleanser.jpeg" height="200" alt = "Cream Jelly Cleanser" class = "product-image">
                         <p><h4>Cream Jelly Cleanser</h4></p>
                         <p class = "price-text">$15</p>
-                        <button class = "add-to-cart-button">Add to Cart</button>
+                        <button onclick = "addToCart('Cream Jelly Cleanser', 15)" class = "add-to-cart-button">Add to Cart</button>
                     </td>
                 </tr>
                 <tr class = "individualproduct-styling">
@@ -88,22 +88,71 @@
                         <img src = "HydratingToner.jpeg" height="200" alt = "Hydrating Toner" class = "product-image">
                         <p><h4>Hydrating Toner</h4></p>
                         <p class = "price-text">$86</p>
-                        <button class = "add-to-cart-button">Add to Cart</button>
+                        <button onclick = "addToCart('Hydrating Toner', 86)" class = "add-to-cart-button">Add to Cart</button>
                     </td>
                     <td class = "individualproduct-item">
                         <img src = "NaturalEyeshadowPalette.jpeg" height="200" alt = "Natural Eyeshadow Palette" class = "product-image">
                         <p><h4>Natural Eyeshadow Palette</h4></p>
                         <p class = "price-text">$57</p>
-                        <button class = "add-to-cart-button">Add to Cart</button>
+                        <button onclick = "addToCart('Natural Eyeshadow Palette', 57)" class = "add-to-cart-button">Add to Cart</button>
                     </td>
                 </tr>
             </table>
         </section>
-        <div id="ShoppingCart"><b>Shopping Cart</b></div>
+        <div class = "shoppingCartClass">
+            <div id="header-of-SC"><b >Shopping Cart</b></div>
+            <div id="ShoppingCart"></div>
+        </div>
     </main>
     <footer class = "mainfooter">
         <hr>
         <p>&copy; 2024 Swamp Fox. All rights reserved.</p>
     </footer>
+    <script>
+        var cartItems = {}
+        function addToCart(productName, price){
+            alert (`${productName} - has been added to Cart`)
+            // if product is already in the cartItems object then increment the quantity 
+            if(cartItems[productName]){
+                cartItems[productName].quantity++;
+            } else {
+            // Otherwise, add the product to the cart with a quantity of 1
+                cartItems[productName] = {
+                    productPrice: price,
+                    quantity: 1
+                }
+
+            }
+            console.log(cartItems.productName);
+            console.log(cartItems.productPrice);
+            console.log(cartItems.quantity);
+            console.log(cartItems);
+
+            const addingToCart = document.getElementById('ShoppingCart');
+            addingToCart.innerHTML = '';
+            Object.keys(cartItems).forEach((productName) => {
+                const { productPrice, quantity } = cartItems[productName];
+                const cartItemlist = document.createElement('div');
+                cartItemlist.innerHTML = `
+                    <p>${productName} - $${productPrice} - ${quantity} <button class="remove-button" onclick="removeFromCart('${productName}')">Remove</button></p>    
+                `;
+                addingToCart.appendChild(cartItemlist);
+            });
+        }
+
+        function removeFromCart(productId) {
+            // Check if the product is in the cart
+            if (cartItems[productId]) {
+                // Decrement the quantity
+                cartItems[productId].quantity--;
+
+                // If quantity becomes 0, remove the item from the cart
+                if (cartItems[productId].quantity === 0) {
+                    delete cartItems[productId];
+                }
+            }
+        }
+
+    </script>
 </body>
 </html>

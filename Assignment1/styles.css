@@ -80,7 +80,17 @@
     align-content:center;
     
 }
-
+.shoppingCartClass{
+    
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    margin: 0; 
+}
+#header-of-SC{
+    font-size: 30px;
+}
 
 
 .individualproduct-styling {

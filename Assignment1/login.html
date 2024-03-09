@@ -47,14 +47,14 @@
             <div class = "flex-container-login">
                 <div >
                     <label for = "username">Username:</label>
-                    <input type = "text" id = "username" name = "username" placeholder = "Enter your username" required>
+                    <input type = "text" id = "username" name = "username" placeholder = "Enter your username" required autocomplete="username">
                 </div>
 
                 <br>
 
                 <div >
                     <label for = "pword">Password:</label>
-                    <input type = "password" id = "pword" name = "pword" maxlength="16" placeholder = "Enter your password"  required>
+                    <input type = "password" id = "pword" name = "pword" maxlength="16" placeholder = "Enter your password"  required autocomplete="current-password">
                     
                 </div>
                 
@@ -96,24 +96,26 @@
                 }
                 
                 var tries = 0;
+                
                 while (tries <= 5){
                 
                     try{
                         const fetchingInfo = await fetchWithRetries('https://jsonplaceholder.typicode.com/users');
-                        if((fetchingInfo.ok)=== true){
-                            const usersData = await fetchingInfo.json(); //synchronously retrieves and parses the JSON response from the API call and stores the resulting JavaScript object (representing the user data) in the usersData variable for further processing in your code.
-                            const user = usersData.find(user => (user.username === username) && (user.email === password));
-                            var modifyMessage = document.getElementById("loginmessagebox");
-                            console.log("Found user:", user.username);
-                            console.log("Found user:", username);
-                            console.log("Found user:", user.email);
-                            console.log("Found user:", email); // trying to see what the problem is
-                            if ((user.username === username) && (user.email === password)) {
-                                modifyMessage.firstChild.textContent ="Login successful!";
-                            } else {
-                                modifyMessage.firstChild.textContent ="Invalid username or user email. Please try again";
-                            }
+                        const usersData = await fetchingInfo.json();
+                        console.log(usersData)
+                        
+                        const user = usersData.find(user => (user.username === username) && (user.email === password));
+                        var modifyMessage = document.getElementById("loginmessagebox");
+                        console.log("Found user:", user.username);
+                        console.log("Found user:", username);
+                        console.log("Found user:", user.email);
+                        console.log("Found user:", email); // trying to see what the problem is
+                        if ((user.username === username) && (user.email === password)) {
+                            modifyMessage.firstChild.textContent ="Login successful!";
+                        } else {
+                            modifyMessage.firstChild.textContent ="Invalid username or user email. Please try again";
                         }
+                    
                         
                     }catch(error){
                         alert("Error: API call was unsuccessful")
@@ -121,8 +123,9 @@
                         await new Promise(resolve => setTimeout(resolve, 250* Math.pow(2, tries))); // this is to make it retry fetching the data a maximum of 5 times
                     }       
                 }
-                
-            }  
+            }
+    
+              
 
                     
         </script>

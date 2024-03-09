@@ -127,17 +127,8 @@
             console.log(cartItems.productPrice);
             console.log(cartItems.quantity);
             console.log(cartItems);
-
-            const addingToCart = document.getElementById('ShoppingCart');
-            addingToCart.innerHTML = '';
-            Object.keys(cartItems).forEach((productName) => {
-                const { productPrice, quantity } = cartItems[productName];
-                const cartItemlist = document.createElement('div');
-                cartItemlist.innerHTML = `
-                    <p>${productName} - $${productPrice} - ${quantity} <button class="remove-button" onclick="removeFromCart('${productName}')">Remove</button></p>    
-                `;
-                addingToCart.appendChild(cartItemlist);
-            });
+            displayItemsInCart();
+            
         }
 
         function removeFromCart(productId) {
@@ -151,6 +142,20 @@
                     delete cartItems[productId];
                 }
             }
+            displayItemsInCart();
+        }
+        function displayItemsInCart(){
+            const addingToCart = document.getElementById('ShoppingCart');
+            addingToCart.innerHTML = '';
+            Object.keys(cartItems).forEach((productName) => {
+                const { productPrice, quantity } = cartItems[productName];
+                const cartItemlist = document.createElement('div');
+                cartItemlist.innerHTML = `
+                    <p>${productName} - $${productPrice} - ${quantity} <button class="remove-button" onclick="removeFromCart('${productName}')">Remove</button></p>    
+                `;
+                addingToCart.appendChild(cartItemlist);
+            });
+
         }
 
     </script>

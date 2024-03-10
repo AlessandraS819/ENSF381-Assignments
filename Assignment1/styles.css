@@ -84,12 +84,21 @@
     
     padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */
     margin: 0; 
 }
 #header-of-SC{
     font-size: 30px;
+}
+.remove-button{
+    padding: 10px;
+    border-radius: 5px;
+    margin: 2px;
+}
+.remove-button:hover{
+    background-color: #ff0000;
 }
 
 

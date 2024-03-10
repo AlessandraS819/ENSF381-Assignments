@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swamp Fox -Products</title>
+    <link rel = "stylesheet" href = "styles.css">
+</head>
+<body>
+    <script>
+    let beautyProducts = {}
+
+    function addToCart(productName, price)
+    {
+
+        alert (`${productName} - has been added to cart`)
+
+            // if product is already in the beautyProducts object then increment the quantity 
+            if(beautyProducts[productName]){
+                beautyProducts[productName].quantity++;
+            } else {
+            // Otherwise, add the product to the cart with a quantity of 1
+            beautyProducts[productName] = {
+                    priceOfProduct: price,
+                    quantity: 1
+                }
+
+            }
+
+            display();
+
+    }
+
+    function display()
+    {
+        const parent_elem = document.getElementById('ShoppingCart');
+        parent_elem.innerHTML = '';
+
+        Object.keys(beautyProducts).forEach((productName) => {
+                const { priceOfProduct, quantity } = beautyProducts[productName];
+                const productDiv = document.createElement('div');
+                productDiv.innerHTML = `<p>${productName} - $${priceOfProduct} - ${quantity} <button class="remove-button" onclick="removeFromShoppingCart('${productName}')">Remove</button></p>`;
+                parent_elem.appendChild(productDiv);
+            });
+
+    }
+
+    function removeFromShoppingCart(productName) {
+
+            // Check if the product is in the cart
+            if (beautyProducts[productName]) {
+                // Decrement the quantity
+                beautyProducts[productName].quantity--;
+
+                // If quantity becomes 0, remove the item from the cart
+                if (beautyProducts[productName].quantity === 0) {
+                    delete beautyProducts[productName];
+                }
+            }
+            display();
+        }
+
+    </script>
+    <header class = "mainheader">
+        <!-- Logo and website name go here -->
+        <div class = "flex-container">
+            <div class = "mainheader-fleximg">
+        <a href="index.html" target =_self title = "Home page" >
+            <img src = "Fox.jpeg" height="200" alt = "Swamp Fox">
+        </a>
+    </div>
+    <div class="mainheader-flextext">
+        <h1>Swamp Fox </h1>
+    </div>
+</div>
+    </header>
+    <div class="flex-container">
+        <!-- Navigation links go here-->
+        <hr>
+        <div class = "navigationbar">
+            <a class = "navigationbarlink" href="index.html" target =_self title = "Home page">Home </a> &emsp;
+        </div>
+        <div class = "navigationbar">
+            <a  class = "navigationbarlink" href="products.html" target =_self title = "Products page">Products</a>&emsp;
+        </div>
+        <div class = "navigationbar">
+            <a  class = "navigationbarlink" href="contact.html" target =_self title = "Contact page" >Contacts</a> &emsp; 
+        </div>  
+        <div class = "navigationbar">
+            <a class = "navigationbarlink" href="login.html" target =_blank title = "Login page" >Login</a> &emsp;
+        </div>
+        <hr>
+    </div>
+    <main>
+        <!-- Products Section -->
+        <section class = "product-list">
+            <table border>
+                <tr class = "individualproduct-styling">
+                    <td class = "individualproduct-item">
+                        <img src = "HydratingSerum.jpeg" height="200" alt = "Hydrating Serum" class = "product-image">
+                        <p><h4 id = "HS">Hydrating Serum</h4></p>
+                        <p class = "price-text" id="HSPrice">$44</p>
+                        <button class = "add-to-cart-button" onclick="addToCart('Hydrating Serum', 44)">Add to Cart</button>
+                    </td>
+                    <td class = "individualproduct-item">
+                        <img src = "PeachLipstickMatte.jpeg" height="200" alt = "Peach Matte Lipstick" class = "product-image">
+                        <p><h4 id = "PML">Peach Matte Lipstick</h4></p>
+                        <p class = "price-text" id="PMLPrice">$29</p>
+                        <button class = "add-to-cart-button" onclick="addToCart('Peach Matte Lipstick',29)">Add to Cart</button>
+                    </td>
+                </tr>
+                <tr class = "individualproduct-styling">
+                    <td class = "individualproduct-item">
+                        <img src = "BlackEyeliner.jpeg" height="200" alt = "Black Eyeliner" class = "product-image">
+                        <p><h4 id = "BE">Black Eyeliner</h4></p>
+                        <p class = "price-text" id="BEPrice">$20</p>
+                        <button class = "add-to-cart-button" onclick="addToCart('Black Eyeliner',20)">Add to Cart</button>
+                    </td>
+                    <td class = "individualproduct-item">
+                        <img src = "AntiAgingRetinol.jpeg" height="200" alt = "Anti Aging Retinol" class = "product-image">
+                        <p><h4 id = 'AAR'>Anti Aging Retinol</h4></p>
+                        <p class = "price-text" id="AARPrice">$26</p>
+                        <button class = "add-to-cart-button" onclick="addToCart('Anti Aging Retinol',26)">Add to Cart</button>
+                    </td>
+                </tr>
+                <tr class = "individualproduct-styling">
+                    <td class = "individualproduct-item">
+                        <img src = "Foundation.jpeg" height="200" alt = "Foundation" class = "product-image">
+                        <p><h4 id = 'F'>Foundation</h4></p>
+                        <p class = "price-text" id="FPrice">$50</p>
+                        <button class = "add-to-cart-button" onclick="addToCart('Foundation',50)">Add to Cart</button>
+                    </td>
+                    <td class = "individualproduct-item">
+                        <img src = "CreamJellyCleanser.jpeg" height="200" alt = "Cream Jelly Cleanser" class = "product-image">
+                        <p><h4 id = "CJC">Cream Jelly Cleanser</h4></p>
+                        <p class = "price-text" id="CJCPrice">$15</p>
+                        <button class = "add-to-cart-button" onclick="addToCart('Cream Jelly Cleanser',15)">Add to Cart</button>
+                    </td>
+                </tr>
+                <tr class = "individualproduct-styling">
+                    <td class = "individualproduct-item">
+                        <img src = "HydratingToner.jpeg" height="200" alt = "Hydrating Toner" class = "product-image">
+                        <p><h4 id ="HT">Hydrating Toner</h4></p>
+                        <p class = "price-text" id="HTPrice">$86</p>
+                        <button class = "add-to-cart-button" onclick="addToCart('Hydrating Toner',86)">Add to Cart</button>
+                    </td>
+                    <td class = "individualproduct-item">
+                        <img src = "NaturalEyeshadowPalette.jpeg" height="200" alt = "Natural Eyeshadow Palette" class = "product-image">
+                        <p ><h4 id ="NEP">Natural Eyeshadow Palette</h4></p>
+                        <p class = "price-text" id="NEPPrice">$57</p>
+                        <button class = "add-to-cart-button" onclick="addToCart('Natural Eyeshadow Palette',57)">Add to Cart</button>
+                    </td>
+                </tr>
+                
+            </table>
+        </section>
+        <div class = "shoppingCartClass">
+            <div id="header-of-SC"><b >Shopping Cart</b></div>
+            <div id="ShoppingCart"></div>
+        </div>
+    </main>
+    <footer class = "mainfooter">
+        <hr>
+        <p>&copy; 2024 Swamp Fox. All rights reserved.</p>
+    </footer>
+</body>
+</html>

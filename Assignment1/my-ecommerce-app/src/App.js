@@ -9,7 +9,8 @@ function App() {
   return (
     <>
       <div className="App">
-      <HomePage />
+      <HomePage/>
+      <ProductPage/>
       </div> 
       <BrowserRouter>
         <Routes>

@@ -7,7 +7,7 @@ const ProductList = ({ addToCart }) => {
       <div className="product-list">
         <h2>Products</h2>
         {product.map(product => (
-          <ProductItem image = {product.image} productName={product.name} price={product.price} addToCart={addToCart}/>
+          <ProductItem key={product.id} product={product} addToCart={addToCart} />
         ))}
       </div>
     );

@@ -12,14 +12,14 @@ const ProductItem = ({ product, addToCart }) => {
   };
 
   return (
-    <div className="product-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <img src={product.image} alt={product.name} />
-      <div className="product-details">
-        <h3>{product.name}</h3>
-        {showDetails && <p>{product.description}</p>}
+    <div className="product-item" >
+        <img src={product.image} alt={product.name} />
+         <div className="product-details" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <h3>{product.name}</h3>
+            {showDetails && <p>{product.description}</p>}
+        </div>
         <p>Price: ${product.price}</p>
-        <button onClick={() => addToCart(product)}>Add to Cart</button>
-      </div>
+        <button onClick={() => addToCart(product)}>Add to Cart</button> 
     </div>
   );
 }

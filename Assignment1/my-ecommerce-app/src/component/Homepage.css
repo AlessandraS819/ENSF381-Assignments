@@ -74,13 +74,21 @@
 
 .product-list {
     display: flex;
-    flex-direction: row;
+    flex-direction:column;
+    justify-content: left;
     background-color: #ddd;
     padding: 20px;
     margin: 20px;
-    align-content:center;
+    align-content:left;
     
 }
+.product-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: left; /* Horizontally center */
+
+}
+
 .shoppingCartClass{
     
     padding: 20px;
@@ -101,7 +109,11 @@
 .remove-button:hover{
     background-color: #ff0000;
 }
-
+.cart{
+    display: flex;
+    flex-direction: column;
+    align-content: right;
+}
 
 .individualproduct-styling {
     display: flex;
@@ -148,6 +160,7 @@
 .add-to-cart-button:hover {
     background-color: #45A049;
 }
+
 /* contact.html css */
 .contact-information {
     

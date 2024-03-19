@@ -11,8 +11,8 @@ function ProductPage(){
             <Header />
             <table>
                 <tr>
-                    <td><ProductList /></td>
-                    <td style = {{verticalAlign:'top'}}><Cart /></td>
+                    <td style = {{width: '50%'}}><ProductList /></td>
+                    <td style = {{width: '50%',verticalAlign:'top'}}><Cart /></td>
                 </tr>
             </table>
             <Footer />

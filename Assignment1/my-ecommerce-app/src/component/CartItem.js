@@ -1,10 +1,23 @@
 import React from 'react';
 
-const CartItem = ({ item, removeFromCart }) => {
+const CartItem = ({ item, removeFromCart, increaseQuantity, decreaseQuantity }) => {
   const { id, name, price, quantity } = item;
 
   const handleRemove = () => {
-    removeFromCart(id);
+    if (quantity < 1){
+        removeFromCart(id);
+    }
+    else{
+        
+    }
+    
+  };
+  const handleIncrease = () => {
+    increaseQuantity(id);
+  };
+
+  const handleDecrease = () => {
+    decreaseQuantity(id);
   };
 
   return (

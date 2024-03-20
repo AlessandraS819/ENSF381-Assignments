@@ -105,6 +105,7 @@
     padding: 10px;
     border-radius: 5px;
     margin: 2px;
+    width:250px
 }
 .remove-button:hover{
     background-color: #ff0000;
@@ -113,6 +114,14 @@
     display: flex;
     flex-direction: column;
     align-content: right;
+}
+.cart-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+.cart-images{
+    width:200px;
 }
 
 .individualproduct-styling {

@@ -2,7 +2,9 @@ import React from 'react';
 import CartItem from './CartItem'; // Import CartItem component
 
 const Cart = ({ cart, removeFromCart }) => {
-
+    const getTotalPrice = () => {
+        return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+      };
     
   
 
@@ -14,7 +16,7 @@ const Cart = ({ cart, removeFromCart }) => {
             <CartItem key={item.id} item={item} removeFromCart={removeFromCart} />
         ))}
       </div>
-      <h4>Total (in cart): ${}</h4>
+      <h4>Total (in cart): ${getTotalPrice().toFixed(2)}</h4>
     </div> 
   );
 }

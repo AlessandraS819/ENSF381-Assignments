@@ -2,7 +2,7 @@ import React from 'react';
 import ProductItem from './ProductItem'; // Import ProductItem component
 import product from '../data/products';// this is the product data array 
 
-const ProductList = () => {
+const ProductList = ({ addToCart }) => {
     return (
         <div className="product-list">
           <h2>Products</h2>
@@ -11,7 +11,7 @@ const ProductList = () => {
           <div >
             {product.map(product => (
                 // Pass each product as a prop to the ProductItem component
-                <ProductItem key={product.id} product={product}  />
+                <ProductItem key={product.id} product={product} addToCart={addToCart}/>
             ))}
           </div>
           

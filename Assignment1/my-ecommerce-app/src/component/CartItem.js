@@ -1,24 +1,14 @@
 import React from 'react';
 
-const CartItem = ({ item, removeFromCart, increaseQuantity, decreaseQuantity }) => {
+
+const CartItem = ({ item, removeFromCart }) => {
   const { id, name, price, quantity } = item;
 
-  const handleRemove = () => {
-    if (quantity < 1){
-        removeFromCart(id);
-    }
-    else{
-        
-    }
-    
-  };
-  const handleIncrease = () => {
-    increaseQuantity(id);
+  const removeItem = () => {
+    removeFromCart(id);
   };
 
-  const handleDecrease = () => {
-    decreaseQuantity(id);
-  };
+
 
   return (
     <div className="cart-item">
@@ -28,7 +18,7 @@ const CartItem = ({ item, removeFromCart, increaseQuantity, decreaseQuantity }) 
         <p>Price: ${price}</p>
         <p>Quantity: {quantity}</p>
         <p>Total Price: ${price * quantity}</p>
-        <button onClick={handleRemove}>Remove</button>
+        <button onClick={removeItem} >Remove</button>
       </div>
     </div>
   );

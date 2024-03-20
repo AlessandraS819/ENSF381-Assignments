@@ -1,7 +1,6 @@
 import React from 'react';
 import './Homepage.css';
 import logo from '../images/logo.png';
-import { Link } from 'react-router-dom';
 function Header(){
     return(
         <>

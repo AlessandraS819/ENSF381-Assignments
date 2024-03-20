@@ -15,11 +15,11 @@ const ProductItem = ({ product, addToCart }) => {
     <div className="product-item" >
         <img src={product.image} alt={product.name} />
          <div className="product-details" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <h3>{product.name}</h3>
-            {showDetails && <p>{product.description}</p>}
+            <h3>{product.name}</h3>   
         </div>
         <p>Price: ${product.price}</p>
-        <button onClick={() => addToCart(product)}>Add to Cart</button> 
+        <button class="add-to-cart-button" onClick={() => addToCart(product)}>Add to Cart</button> 
+        {showDetails && <p>{product.description}</p>}
     </div>
   );
 }

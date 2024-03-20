@@ -39,7 +39,7 @@ function ProductPage(){
             <Header />
             <table>
                 <tr>
-                    <td style = {{width: '50%'}}><ProductList addToCart={addToCart} /></td>
+                    <td style = {{width: '55%'}}><ProductList addToCart={addToCart} /></td>
                     <td style = {{width: '50%',verticalAlign:'top'}}><Cart cart={cart} removeFromCart={removeFromCart} /></td>
                 </tr>
             </table>

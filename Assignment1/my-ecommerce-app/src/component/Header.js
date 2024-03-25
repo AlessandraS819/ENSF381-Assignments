@@ -1,38 +1,40 @@
 import React from 'react';
-import './Homepage.css';
 import logo from '../images/logo.png';
-function Header(){
-    return(
-        <>
-        <title>Swamp Fox</title>
-        <link rel="homepagesheet" href="Homepage.css" />
-        <header className="mainheader">
-            <meta charSet="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+import '../index.css';
 
-            {/* Logo and website name go here  src={logo}*/}
-            <div className="flex-container">
-                <div className="mainheader-fleximg">
-                    <a href='/' target="_self" title="Home page">
-                    <img src={logo} height={200} alt="Swamp Fox" />
-                    </a>
-                </div>
-                <div className="mainheader-flextext">
-                    <h1>Swamp Fox</h1>
-                </div>
-            </div>
-        </header>
+function Header() {
+    return (
+        <div>
+        <header>
+    <meta charSet="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <div className="flex-container">
-            {/* Navigation links go here*/}
-            <hr />
-            <div className="navigationbar">
-                <a className="navigationbarlink" href='/HomePage' target="_self" title="Home page">Home</a>{" "}
-                <a className="navigationbarlink" href='/ProductPage'target="_self" title="Products page">Products</a>{" "}
-                <a className="navigationbarlink" href="login.html" target="_blank" title="Login page">Login</a>{" "}
-            </div>
-            <hr />
+        <div className="mainheader-fleximg">
+            <a>
+            <img src={logo} height={200} alt="e-commerce" />
+            </a>
         </div>
-        </>
+
+        <div className="mainheader-flextext">
+        <h1>e-commerce</h1>
+        </div>
+        </div>
+</header>
+<div className="flex-container">
+    {/* Navigation links go here*/}
+    <div className="navigationbar1">
+    <a href='/'> Home </a>
+    </div>
+    <div  className="navigationbar2">
+    <a href='/products'>Products</a>
+    </div>
+    <div  className="navigationbar3">
+    <a href='/login'>Login</a>
+    </div>
+</div>
+</div>
     );
 }
-export default Header
+
+export default Header;

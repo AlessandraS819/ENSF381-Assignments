@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.mainheader-fleximg {
+  text-align: left;
+  width: 100%;
+} 
+
+.mainheader-flextext {
+  text-align: right;
+  color: black;
+  width: 100%;
+  }
+
+  .navigationbar1{
+    width: 100%;
+    text-align: left;
+    color: black;
+}
+
+.navigationbar2{
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+
+.navigationbar3{
+  width: 100%;
+  text-align: right;
+  color: black;
+}
+
+.starRating{
+  height: 40;
+  width:40px;
+  padding: 10;
+}

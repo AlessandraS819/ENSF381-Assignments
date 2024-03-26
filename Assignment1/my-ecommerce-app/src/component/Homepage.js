@@ -10,7 +10,7 @@ function HomePage() {
     return (
     <div>
         <Header />
-      <HomeMainSection />
+        <HomeMainSection />
         <Footer />
     </div>
     );

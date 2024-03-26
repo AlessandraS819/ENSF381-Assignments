@@ -11,9 +11,7 @@ function Header() {
 
         <div className="flex-container">
         <div className="mainheader-fleximg">
-            <a>
-            <img src={logo} height={200} alt="e-commerce" />
-            </a>
+            <a><img src={logo} height={200} alt="e-commerce" /> </a>
         </div>
 
         <div className="mainheader-flextext">

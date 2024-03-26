@@ -7,7 +7,19 @@ import './Productpage.css';
 
 function ProductPage(){
     // state to manage items in the cart
-    const [cart, setCart] = useState([])
+    //const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        const storedCart = localStorage.getItem('cart');
+        return storedCart ? JSON.parse(storedCart) : [];
+      });
+    
+      // Function to update cart state and local storage
+      const updateCart = (newCart) => {
+        setCart(newCart);
+        localStorage.setItem('cart', JSON.stringify(newCart));
+      };
+    
+    
     const addToCart = (product) => {
         const itemIndex = cart.findIndex((item) => item.id === product.id);
     
@@ -15,10 +27,12 @@ function ProductPage(){
           // Item already exists in cart, update its quantity
           const updatedCart = [...cart];
           updatedCart[itemIndex].quantity++;
-          setCart(updatedCart);
+          updateCart(updatedCart);
+          //setCart(updatedCart);
         } else {
           // Item doesn't exist in cart, add it
-          setCart([...cart, { ...product, quantity: 1 }]);
+          //setCart([...cart, { ...product, quantity: 1 }]);
+          updateCart([...cart, { ...product, quantity: 1 }]);
         }
       };
     
@@ -34,6 +48,7 @@ function ProductPage(){
     
         setCart(updatedCart.filter((item) => item.quantity > 0));
       };
+      
     return(
         <div className = "product-page">
         <>

@@ -3,6 +3,7 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import ProductList from './ProductList.js';
 import Cart from './Cart.js';
+import './Productpage.css';
 
 function ProductPage(){
     // state to manage items in the cart

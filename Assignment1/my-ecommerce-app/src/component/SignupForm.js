@@ -1,6 +1,9 @@
 import React from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
 
 function SignupForm(){
+    const navigate = useNavigate();
+
     return(
         <>
         <form>
@@ -31,13 +34,14 @@ function SignupForm(){
             </div>
             <br />
             <div>
-            <button onclick="validateLogin()" type="button">
+            <button onclick="validateSignup()" type="button">
                 Login
             </button>
             </div>
             <br />
             <div>
-            <button type="button">
+            
+            <button type="button" onClick = {() => {Navigate("/signup")}}>
                 Switch to Signup
             </button>
             </div>

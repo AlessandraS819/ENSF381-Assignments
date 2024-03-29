@@ -38,9 +38,11 @@ function LoginForm(){
             </div>
             <br />
             <div>
+            <a href="SignupForm.js" target="_self" title="Signup page">
             <button type="button">
                 Switch to Signup
             </button>
+            </a>
             </div>
             <div>
             {/*<p>

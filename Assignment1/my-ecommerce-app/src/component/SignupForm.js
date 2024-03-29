@@ -1,7 +1,6 @@
 import React from 'react';
 
-function LoginForm(){
-
+function SignupForm(){
     return(
         <>
         <form>
@@ -54,7 +53,7 @@ function LoginForm(){
         </div>
         </form>
 
-                </>
-            );
+        </>
+    );
 }
-export default LoginForm;
+export default SignupForm;

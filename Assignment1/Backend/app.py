@@ -16,7 +16,6 @@ def add_users():
 
     new_user = request.json
     users = load_users()
-    users.append(new_user)
 
     username_to_find = new_user['username']
     found_user = search_username(users, username_to_find)
@@ -25,10 +24,11 @@ def add_users():
         print(f"User found: {found_user}")
     else:
         print("User not found")
+        users.append(new_user)
 
-    with open(users.json, 'w') as json_file:
-        json.dump(new_user, json_file, indent=4)
-    return jsonify(new_user), 201
+        with open(users.json, 'w') as json_file:
+            json.dump(new_user, json_file, indent=4)
+        return jsonify(new_user), 201
 
 
 def search_username(users, username):

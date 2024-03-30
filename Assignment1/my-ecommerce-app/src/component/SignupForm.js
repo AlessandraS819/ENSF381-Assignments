@@ -1,13 +1,17 @@
 import React from 'react';
-import { Navigate, useNavigate } from "react-router-dom";
+//import { Navigate, useNavigate } from "react-router-dom";
+import Header from './Header.js';
+import Footer from './Footer.js';
 
 function SignupForm(){
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     return(
         <>
+        <Header/>
         <form>
         <br />
+        <h2>Signup</h2>
         <div>
             <div>
             <label htmlFor="username">Username:</label>
@@ -20,7 +24,6 @@ function SignupForm(){
                 autoComplete="username"
             />
             </div>
-            <br />
             <div>
             <label htmlFor="pword">Password:</label>
             <input
@@ -32,31 +35,50 @@ function SignupForm(){
                 autoComplete="current-password"
             />
             </div>
-            <br />
+            <div>
+            <label htmlFor="confirmpword">Confirm Password:</label>
+            <input
+                type="confirmpassword"
+                id="confirmpword"
+                name="confirmpword"
+                placeholder="Confirm your password"
+                required=""
+                autoComplete="current-password"
+            />
+            </div>
+
+
+
+
+            <div>
+            <label htmlFor="email">Email:</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your Email"
+                required=""
+            />
+            </div>
+
+
+
+
             <div>
             <button onclick="validateSignup()" type="button">
-                Login
-            </button>
-            </div>
-            <br />
-            <div>
-            
-            <button type="button" onClick = {() => {Navigate("/signup")}}>
-                Switch to Signup
+                Signup
             </button>
             </div>
             <div>
-            {/*<p>
-                Don't have an account?{" "}
-                <a href="signup.html">
-                Sign Up
-                <br />
-                </a>
-            </p>*/}
+            <a href="login" target="_self" title="Login page">
+            <button  type="button">
+                Switch to Login
+            </button>
+            </a>
             </div>
         </div>
         </form>
-
+        <Footer/>
         </>
     );
 }

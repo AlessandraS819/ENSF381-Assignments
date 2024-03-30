@@ -36,3 +36,6 @@ def search_username(users, username):
         if user['username'] == username:
             return user
     return None
+
+if __name__ == '__main__':
+    app.run(debug = True)

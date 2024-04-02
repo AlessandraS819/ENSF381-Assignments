@@ -1,4 +1,9 @@
 
 {"users": [
+    {
+        "username": "Guest",
+        "password": "guest123#",
+        "email": "Guest123@email.com"
+    }
 
 ]}

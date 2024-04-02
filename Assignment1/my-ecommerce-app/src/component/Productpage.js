@@ -45,8 +45,9 @@ function ProductPage(){
           }
           return item;
         });
-    
-        setCart(updatedCart.filter((item) => item.quantity > 0));
+        const filteredCart = updatedCart.filter((item) => item.quantity > 0);
+        setCart(filteredCart);
+        localStorage.setItem('cart', JSON.stringify(filteredCart));
       };
       
     return(

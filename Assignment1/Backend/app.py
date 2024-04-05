@@ -4,7 +4,7 @@ import json
 import os
 
 app = Flask(__name__)
-
+CORS(app)
 products = [
     {
         "id": 1,
@@ -80,7 +80,7 @@ products = [
 
 @app.route('/products', methods = ['GET'])
 def get_products():
-    return products
+    return jsonify(products)
 
 def load_users():
     with open('users.json', 'r') as f:

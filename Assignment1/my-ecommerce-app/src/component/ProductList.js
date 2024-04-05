@@ -1,39 +1,28 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ProductItem from './ProductItem'; // Import ProductItem component
-    
+import ProductItem from './ProductItem';
 
 const ProductList = ({ addToCart }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetchProducts();
+        axios.get('http://localhost:5000/products')
+            .then(response => {
+                setProducts(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching products:', error);
+            });
     }, []);
-
-    const fetchProducts = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/products');
-            setProducts(response.data);
-        } catch (error) {
-            console.error('Error fetching products:', error);
-        }
-    };
-
+    console.log(products);
     return (
         <div className="product-list">
-          <h2>Products</h2>
-          {/* Map over each product in the productsData array */}
-          <div></div>
-          <div >
+            <h2>Products</h2>
             {products.map(product => (
-                // Pass each product as a prop to the ProductItem component
-                <ProductItem key={product.id} product={product} addToCart={addToCart}/>
+                <ProductItem key={product.id} product={product} addToCart={addToCart} />
             ))}
-          </div>
-          
         </div>
-      );
- 
-  }
-  
-  export default ProductList;
+    );
+}
+
+export default ProductList;

@@ -1,10 +1,25 @@
 import React from 'react';
-//import { Navigate, useNavigate } from "react-router-dom";
+import axios from 'axios';
 import Header from './Header.js';
 import Footer from './Footer.js';
 
+
 function SignupForm(){
     //const navigate = useNavigate();
+    const validateSignup = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/signup/add', {
+                username: document.getElementById('username').value,
+                password: document.getElementById('pword').value,
+                email: document.getElementById('email').value
+            });
+            console.log(response.data); // Handle successful signup response
+            // Redirect or update UI accordingly
+        } catch (error) {
+            console.error('Error:', error.response.data); // Handle error response
+            // Update UI to display error message
+        }
+    }
 
     return(
         <>
@@ -65,7 +80,7 @@ function SignupForm(){
 
 
             <div>
-            <button onclick="validateSignup()" type="button">
+            <button onclick={validateSignup()} type="button">
                 Signup
             </button>
             </div>

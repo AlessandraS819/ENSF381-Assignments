@@ -1,6 +1,21 @@
 import React from 'react';
+import axios from 'axios';
 
 function LoginForm(){
+    const validateLogin = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/login', {
+                username: document.getElementById('username').value,
+                password: document.getElementById('pword').value
+            });
+            console.log(response.data); // Handle successful login response
+            // Redirect or update UI accordingly
+        } catch (error) {
+            console.error('Error:', error.response.data); // Handle error response
+            // Update UI to display error message
+            alert('User does not exist');
+        }
+    }
 
     return(
         <>
@@ -31,7 +46,7 @@ function LoginForm(){
             />
             </div>
             <div>
-            <button onclick="validateLogin()" type="button">
+            <button onclick={validateLogin()} type="button">
                 Login
             </button>
             </div>

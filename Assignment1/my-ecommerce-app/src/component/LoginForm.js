@@ -13,6 +13,7 @@ function LoginForm(){
         } catch (error) {
             console.error('Error:', error.response.data); // Handle error response
             // Update UI to display error message
+            alert('User does not exist');
         }
     }
 

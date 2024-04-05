@@ -7,17 +7,22 @@ import Footer from './Footer.js';
 function SignupForm(){
     //const navigate = useNavigate();
     const validateSignup = async () => {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('pword').value;
+        const email = document.getElementById('email').value;
         try {
             const response = await axios.post('http://localhost:5000/signup/add', {
-                username: document.getElementById('username').value,
-                password: document.getElementById('pword').value,
-                email: document.getElementById('email').value
+                username,
+                password,
+                email
             });
             console.log(response.data); // Handle successful signup response
+            alert('User added successfully');
             // Redirect or update UI accordingly
         } catch (error) {
             console.error('Error:', error.response.data); // Handle error response
             // Update UI to display error message
+            alert('User already exists');
         }
     }
 

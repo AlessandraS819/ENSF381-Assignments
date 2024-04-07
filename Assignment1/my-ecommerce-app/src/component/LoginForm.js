@@ -6,7 +6,7 @@ function LoginForm(){
         event.preventDefault(); // Prevent form submission
 
         try {
-            const response = await axios.post('http://localhost:5000/login', {
+            const response = await axios.post('http://localhost:5000/users', {
                 username: document.getElementById('username').value,
                 password: document.getElementById('pword').value
             });

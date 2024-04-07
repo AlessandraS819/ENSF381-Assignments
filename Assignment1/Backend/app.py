@@ -77,30 +77,41 @@ products = [
         "image": 'images/product10.jpg'
     }
 ]
+users = [
+    
+    {
+        "username": "Guest",
+        "password": "guest1",
+        "email": "guest@example.com"
+    },
+    {
+        "username": "user",
+        "password": "password1",
+        "email": "user1@example.com"
+    }
+
+
+]
 
 @app.route('/products', methods = ['GET'])
 def get_products():
     return jsonify(products)
 
 def load_users():
-    with open('users.json', 'r') as f:
-        return json.load(f)['users']
+    return jsonify(products)
     
 def add_user_to_json(user):
-    with open('users.json', 'w') as f:
-        users = load_users()
-        users.append(user)
-        json.dump({'users': users}, f, indent=4)
+    users.append(user)
+        
 
 def find_user_by_username(username):# find user by their username
-    users = load_users()
     for user in users:
         if user['username'] == username:
             return user
     return None
 
 
-@app.route('/signup/add', methods=['POST'])
+@app.route('/users/add', methods=['POST'])
 def add_user():
     new_user = request.json
     username = new_user['username']
@@ -110,9 +121,8 @@ def add_user():
     add_user_to_json(new_user)
     return jsonify({'message': 'User added successfully'}), 201
 
-@app.route('/login', methods=['POST'])
+@app.route('/users', methods=['POST'])
 def login():
-    users = load_users()
     login_data = request.json
     username = login_data['username']
     password = login_data['password']

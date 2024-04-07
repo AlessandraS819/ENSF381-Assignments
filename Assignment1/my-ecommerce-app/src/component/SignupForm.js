@@ -37,10 +37,12 @@ function SignupForm(){
         const email = document.getElementById('email').value;
 
         try {
-            const response = await axios.post('http://localhost:5000/signup/add', {
+            const response = await axios.post('http://localhost:5000/users/add', {
                 username,
                 password,
                 email
+            }, {
+                method: 'POST' // Specify method as POST
             });
             console.log(response.data); // Handle successful signup response
             setErrorMessage('');

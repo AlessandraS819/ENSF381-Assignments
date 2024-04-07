@@ -101,15 +101,6 @@ def find_user_by_username(username):# find user by their username
 
 
 @app.route('/signup/add', methods=['POST'])
-def add_users():
-
-    new_user = request.json
-    username = new_user['username']
-    existing_user = find_user_by_username(username)
-    if existing_user:
-        return jsonify({'error: '})
-
-@app.route('/signup/add', methods=['POST'])
 def add_user():
     new_user = request.json
     username = new_user['username']

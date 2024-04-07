@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 
 function LoginForm(){
-    const validateLogin = async () => {
+    const validateLogin = async (event) => {
+        event.preventDefault(); // Prevent form submission
+
         try {
             const response = await axios.post('http://localhost:5000/login', {
                 username: document.getElementById('username').value,
@@ -19,7 +21,7 @@ function LoginForm(){
 
     return(
         <>
-        <form>
+        <form onSubmit={validateLogin}>
         <br />
         <h2>Login</h2>
         <div>
@@ -46,7 +48,7 @@ function LoginForm(){
             />
             </div>
             <div>
-            <button onclick={validateLogin()} type="button">
+            <button type="submit">
                 Login
             </button>
             </div>
@@ -59,7 +61,7 @@ function LoginForm(){
             </div>
         </div>
         </form>
-                </>
-            );
+        </>
+    );
 }
 export default LoginForm;

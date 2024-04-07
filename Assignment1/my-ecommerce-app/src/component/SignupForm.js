@@ -1,15 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import Header from './Header.js';
 import Footer from './Footer.js';
 
+//Options for messages: All fields are required!, Passwords do not match! Username is already taken, 
 
 function SignupForm(){
     //const navigate = useNavigate();
-    const validateSignup = async () => {
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const validateForm = () => {
+        const username = document.getElementById('username')?.value;
+        const password = document.getElementById('pword')?.value;
+        const confirmPassword = document.getElementById('confirmpword')?.value;
+        const email = document.getElementById('email')?.value;
+
+        if (!username || !password || !confirmPassword || !email) {
+            setErrorMessage('All fields are required!');
+            return false;
+        }
+        if (password !== confirmPassword) {
+            setErrorMessage('Passwords do not match!');
+            return false;
+        }
+
+        return true;
+    }
+
+    const handleSignup = async () => {
+        if (!validateForm()) {
+            return;
+        }
+
         const username = document.getElementById('username').value;
         const password = document.getElementById('pword').value;
         const email = document.getElementById('email').value;
+
         try {
             const response = await axios.post('http://localhost:5000/signup/add', {
                 username,
@@ -17,14 +43,17 @@ function SignupForm(){
                 email
             });
             console.log(response.data); // Handle successful signup response
-            alert('User added successfully');
+            setErrorMessage('');
+            setErrorMessage('User added successfully');
             // Redirect or update UI accordingly
         } catch (error) {
-            console.error('Error:', error.response.data); // Handle error response
-            // Update UI to display error message
-            alert('User already exists');
+            console.error('Error:', error.response?.data); // Handle error response
+            setErrorMessage('User is already taken');
         }
     }
+
+
+    
 
     return(
         <>
@@ -32,6 +61,7 @@ function SignupForm(){
         <form>
         <br />
         <h2>Signup</h2>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <div>
             <div>
             <label htmlFor="username">Username:</label>
@@ -58,7 +88,7 @@ function SignupForm(){
             <div>
             <label htmlFor="confirmpword">Confirm Password:</label>
             <input
-                type="confirmpassword"
+                type="password"
                 id="confirmpword"
                 name="confirmpword"
                 placeholder="Confirm your password"
@@ -85,16 +115,16 @@ function SignupForm(){
 
 
             <div>
-            <button onclick={validateSignup()} type="button">
-                Signup
-            </button>
+                <button onClick={handleSignup} type="button">
+                    Signup
+                </button>
             </div>
             <div>
-            <a href="login" target="_self" title="Login page">
-            <button  type="button">
-                Switch to Login
-            </button>
-            </a>
+                <a href="login" target="_self" title="Login page">
+                    <button  type="button">
+                        Switch to Login
+                    </button>
+                </a>
             </div>
         </div>
         </form>

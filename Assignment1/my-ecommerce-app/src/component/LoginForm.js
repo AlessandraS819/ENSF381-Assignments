@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function LoginForm(){
+function LoginForm({ setIsLoggedIn }){
+    const navigate = useNavigate();
     const validateLogin = async (event) => {
         event.preventDefault(); // Prevent form submission
 
@@ -10,10 +12,17 @@ function LoginForm(){
                 username: document.getElementById('username').value,
                 password: document.getElementById('pword').value
             });
-            console.log(response.data); // Handle successful login response
-            // Redirect or update UI accordingly
+            if (response.status === 200) {
+                console.log('login successful'); // Handle successful login response
+                localStorage.setItem('isLoggedIn', true);
+                setIsLoggedIn(true); // Update login status in App component
+                navigate('/products'); // Navigate to ProductPage
+            } else {
+                console.error('Error:  Response status is not 200'); // Log error message
+                alert('An error occurred during login'); // Display error message to user
+            }
         } catch (error) {
-            console.error('Error:', error.response.data); // Handle error response
+            console.error('Error:', error); // Handle error response
             // Update UI to display error message
             alert('User does not exist');
         }

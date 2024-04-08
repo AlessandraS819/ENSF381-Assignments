@@ -130,6 +130,7 @@ def login():
     login_data = request.json
     username = login_data['username']
     password = login_data['password']
+    print( login_data, username, password)
     for user in users:
         if user['username'] == username and user['password'] == password:
             return jsonify({'message': 'Login successful'}), 200

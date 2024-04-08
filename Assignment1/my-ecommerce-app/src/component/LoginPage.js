@@ -4,12 +4,12 @@ import Footer from './Footer';
 import LoginForm from './LoginForm';
 
 
-function LoginPage(){
+function LoginPage({ setIsLoggedIn }){
 
     return(
         <>
             <Header/>
-            <LoginForm/>
+            <LoginForm setIsLoggedIn={setIsLoggedIn}/>
             <Footer/>
 
         </>

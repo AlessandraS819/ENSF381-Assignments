@@ -96,6 +96,10 @@ users = [
 @app.route('/products', methods = ['GET'])
 def get_products():
     return jsonify(products)
+@app.route('/users', methods = ['GET'])
+@app.route('/users/add', methods = ['GET'])
+def get_users():
+    return jsonify(users)
 
 def load_users():
     return jsonify(products)

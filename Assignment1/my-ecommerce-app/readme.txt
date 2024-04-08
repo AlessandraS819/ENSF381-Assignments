@@ -7,3 +7,8 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom'
 The commands needed to install these libraries using npm are:
 npm install react-icons
 npm install react-router-dom
+npm install react-hook-form
+
+Backend 
+pip flask 
+pip flask_cors

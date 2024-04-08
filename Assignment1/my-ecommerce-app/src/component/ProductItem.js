@@ -13,7 +13,7 @@ const ProductItem = ({ product, addToCart }) => {
 
   return (
     <div className="product-item" >
-        <img src={product.image} alt={product.name} />
+        <img  className="product-images" src={product.image} alt={product.name} />
          <div className="product-details" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <h3>{product.name}</h3>   
         </div>

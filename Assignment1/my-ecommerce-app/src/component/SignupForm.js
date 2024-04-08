@@ -1,95 +1,69 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import Header from './Header.js';
 import Footer from './Footer.js';
 
+//Options for messages: All fields are required!, Passwords do not match! Username is already taken, 
 
 function SignupForm(){
     //const navigate = useNavigate();
-    /*const validateSignup = async () => {
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const validateForm = () => {
+        const username = document.getElementById('username')?.value;
+        const password = document.getElementById('pword')?.value;
+        const confirmPassword = document.getElementById('confirmpword')?.value;
+        const email = document.getElementById('email')?.value;
+
+        if (!username || !password || !confirmPassword || !email) {
+            setErrorMessage('All fields are required!');
+            return false;
+        }
+        if (password !== confirmPassword) {
+            setErrorMessage('Passwords do not match!');
+            return false;
+        }
+
+        return true;
+    }
+
+    const handleSignup = async () => {
+        if (!validateForm()) {
+            return;
+        }
+
         const username = document.getElementById('username').value;
         const password = document.getElementById('pword').value;
         const email = document.getElementById('email').value;
+
         try {
-            const response = await axios.post('http://localhost:5000/signup/add', {
+            const response = await axios.post('http://localhost:5000/users/add', {
                 username,
                 password,
                 email
+            }, {
+                method: 'POST' // Specify method as POST
             });
             console.log(response.data); // Handle successful signup response
-            alert('User added successfully');
+            setErrorMessage('');
+            setErrorMessage('User added successfully');
             // Redirect or update UI accordingly
         } catch (error) {
-            console.error('Error:', error.response.data); // Handle error response
-            // Update UI to display error message
-            alert('User already exists');
+            console.error('Error:', error.response?.data); // Handle error response
+            setErrorMessage('User is already taken');
         }
-    }*/
+    }
 
-    const [formData, setFormData] = useState({
-        username: '',
-        pword: '',
-        confirmpword: '',
-        email: ''
-    });
 
-    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({...formData, [name]: value });
-        console.log(formData);
-    };
-
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
-        console.log("Form Data:", formData)
-        setFormErrors(validate(formData));
-        setIsSubmit(true);
-      };
-
-      useEffect(() => {
-        console.log(formErrors);
-        if(Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formData);
-        }
-      }, [formErrors]);
-
-    const validate = (values) => {
-        const errors = {}
-        console.log('Inside validate');
-        if (!values.username) {
-            errors.username = "Username is required!";
-            console.log(errors.username);
-        }
-
-        if (!values.pword) {
-            errors.pword = "Password is required!";
-            console.log(errors.pword);
-        }
-
-        if (!values.confirmpword) {
-            errors.confirmpword = "Password confirmation is required!";
-        }
-        else if (values.confirmpword.localeCompare(values.pword))
-        { errors.confirmpword = "Password and Confirm Password fields must match!"}
-
-        if (!values.email) {
-            errors.email = "Email is required!";
-        }
-
-        console.log(errors);
-
-        return errors;
-    };
+    
 
     return(
         <>
         <Header/>
-        <form onSubmit={onSubmitHandler}>
+        <form>
         <br />
         <h2>Signup</h2>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <div>
             <div>
             <label htmlFor="username">Username:</label>
@@ -98,13 +72,10 @@ function SignupForm(){
                 id="username"
                 name="username"
                 placeholder="Enter your username"
-                //required=""
-                value={formData.username}
-                onChange={handleChange}
+                required=""
                 autoComplete="username"
             />
             </div>
-            <p style={{ color: 'red' }}>{formErrors.username}</p>
             <div>
             <label htmlFor="pword">Password:</label>
             <input
@@ -112,13 +83,10 @@ function SignupForm(){
                 id="pword"
                 name="pword"
                 placeholder="Enter your password"
-                //required=""
-                value={formData.pword}
-                onChange={handleChange}
+                required=""
                 autoComplete="current-password"
             />
             </div>
-            <p style={{ color: 'red' }}>{formErrors.pword}</p>
             <div>
             <label htmlFor="confirmpword">Confirm Password:</label>
             <input
@@ -126,13 +94,13 @@ function SignupForm(){
                 id="confirmpword"
                 name="confirmpword"
                 placeholder="Confirm your password"
-                //required=""
-                value={formData.confirmpword}
-                onChange={handleChange}
+                required=""
                 autoComplete="current-password"
             />
             </div>
-            <p style={{ color: 'red' }}>{formErrors.confirmpword}</p>
+
+
+
 
             <div>
             <label htmlFor="email">Email:</label>
@@ -141,23 +109,24 @@ function SignupForm(){
                 id="email"
                 name="email"
                 placeholder="Enter your Email"
-                //required=""
-                value={formData.email}
-                onChange={handleChange}
+                required=""
             />
             </div>
-            <p style={{ color: 'red' }}>{formErrors.email}</p>
+
+
+
+
             <div>
-            <button >
-                Signup
-            </button>
+                <button onClick={handleSignup} type="button">
+                    Signup
+                </button>
             </div>
             <div>
-            <a href="login" target="_self" title="Login page">
-            <button type="button">
-                Switch to Login
-            </button>
-            </a>
+                <a href="login" target="_self" title="Login page">
+                    <button  type="button">
+                        Switch to Login
+                    </button>
+                </a>
             </div>
         </div>
         </form>

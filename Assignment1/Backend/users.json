@@ -1,9 +1,14 @@
-
-{"users": [
-    {
-        "username": "Guest",
-        "password": "guest123#",
-        "email": "Guest123@email.com"
-    }
-
-]}
+{
+    "users":[
+        {
+            "username": "Guest",
+            "password": "guest1",
+            "email": "guest@example.com"
+        },
+        {
+            "username": "user",
+            "password": "password1",
+            "email": "user1@example.com"
+        }
+    ]
+}

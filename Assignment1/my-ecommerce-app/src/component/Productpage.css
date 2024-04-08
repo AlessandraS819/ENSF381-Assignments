@@ -5,9 +5,10 @@
     flex-direction:column;
     justify-content: left;
     /*background-color: #ddd;*/
-    padding: 20px;
+    /*padding: 20px;*/
     margin: 20px;
     align-content:left;
+    width: 45%;
     
 }
 .product-item{
@@ -16,16 +17,11 @@
     justify-content: left; /* Horizontally center */
 
 }
-
-.shoppingCartClass{
-    
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    margin: 0; 
+.product-image{
+    width: 50px;
 }
+
+
 #header-of-SC{
     font-size: 30px;
 }
@@ -42,6 +38,7 @@
     display: flex;
     flex-direction: column;
     align-content: right;
+    
 }
 .cart-item{
     display: flex;
@@ -49,17 +46,18 @@
     justify-content: right;
 }
 .cart-images{
-    width:200px;
+    width:300px;
 }
 
-.individualproduct-styling {
+
+/* .individualproduct-styling {
     display: flex;
     flex-direction: row;
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
     align-items: center;
-}
+} */
 
 .individualproduct-item {
     /*background-color: #f9f9f9;*/
@@ -71,7 +69,7 @@
 }
 
 .product-image {
-    max-width: 100%;
+    max-width: 50%;
     border-radius: 8px;
     margin-bottom: 10px;
 }
@@ -99,20 +97,11 @@
     background-color: #45A049;
 }*/
 
-/* products.html media css */
-@media screen and (min-width: 768px) {
-    .product-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-    }
-}
-
 /* Define styles for mobile screens */
 @media screen and (max-width: 767px) {
     .product-list table {
         display: block;
-        width: 100%; /* Ensure table occupies full width */
+        width: 50%; /* Ensure table occupies full width */
         align-items: center;
     }
 
@@ -127,18 +116,18 @@
         margin-bottom: 10px; /* Add space between navigation links */
     }
     .product-list img {
-        max-width: 100%; /* Set maximum width to 100% */
+        max-width: 50%; /* Set maximum width to 100% */
         height: auto; /* Ensure aspect ratio is maintained */
     }
 
     .individualproduct-item {
-        width: 100%; /* Set width to 100% to fit within the screen */
+        width: 50%; /* Set width to 100% to fit within the screen */
         box-sizing: border-box; /* Include padding and border in the element's total width */
         padding: 10px; /* Add padding to create space between items */
     }
 
     .product-image {
-        max-width: 100%; /* Set maximum width to 100% to fit within the container */
+        max-width: 50%; /* Set maximum width to 100% to fit within the container */
         height: auto; /* Ensure aspect ratio is maintained */
         display: block; /* Ensure the image behaves as a block-level element */
         margin-bottom: 10px; /* Add margin to create space between the image and other elements */
@@ -154,26 +143,7 @@
     }
 
 }
-
 @media screen and (max-width: 480px) {
-
-    .product-list table {
-        display: block;
-        width: 100%; /* Ensure table occupies full width */
-    }
-
-    .product-list tr {
-        display: block;
-        width: 100%; /* Ensure table rows occupy full width */
-        margin-bottom: 20px; /* Add space between rows */
-        align-items: center;
-    }
-
-    .product-list td {
-        display: block;
-        width: 60%; /* Ensure table cells occupy full width */
-        margin-bottom: 20px;
-    }
 
     .navigationbar {
         width: 100%; /* Ensure navigation bar spans the full width */
@@ -185,19 +155,19 @@
         margin-bottom: 10px; /* Add space between navigation links */
     }
     .product-list img {
-        max-width: 100%; /* Set maximum width to 100% */
+        max-width: 50%; /* Set maximum width to 100% */
         height: auto; /* Ensure aspect ratio is maintained */
     }
 
     .individualproduct-item {
-        width: 100%; /* Set width to 100% to fit within the screen */
+        width: 50%; /* Set width to 100% to fit within the screen */
         box-sizing: border-box; /* Include padding and border in the element's total width */
         padding: 10px; /* Add padding to create space between items */
         margin-bottom: 20px; /* Add margin to create space between rows */
     }
 
     .product-image {
-        max-width: 100%; /* Set maximum width to 100% to fit within the container */
+        max-width: 50%; /* Set maximum width to 100% to fit within the container */
         height: auto; /* Ensure aspect ratio is maintained */
         display: block; /* Ensure the image behaves as a block-level element */
         margin-bottom: 10px; /* Add margin to create space between the image and other elements */

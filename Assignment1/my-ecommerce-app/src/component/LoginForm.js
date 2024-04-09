@@ -14,7 +14,6 @@ function LoginForm({ setIsLoggedIn }){
             });
             if (response.status === 200) {
                 console.log('login successful'); // Handle successful login response
-                localStorage.setItem('isLoggedIn', true);
                 setIsLoggedIn(true); // Update login status in App component
                 navigate('/products'); // Navigate to ProductPage
             } else {

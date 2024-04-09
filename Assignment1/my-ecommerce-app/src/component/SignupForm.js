@@ -6,7 +6,6 @@ import Footer from './Footer.js';
 //Options for messages: All fields are required!, Passwords do not match! Username is already taken, 
 
 function SignupForm(){
-    //const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
 
     const validateForm = () => {
@@ -23,7 +22,6 @@ function SignupForm(){
             setErrorMessage('Passwords do not match!');
             return false;
         }
-
         return true;
     }
 
@@ -31,13 +29,12 @@ function SignupForm(){
         if (!validateForm()) {
             return;
         }
-
         const username = document.getElementById('username').value;
         const password = document.getElementById('pword').value;
         const email = document.getElementById('email').value;
 
         try {
-            const response = await axios.post('http://localhost:5000/users/add', {
+            const response = await axios.post('http://127.0.0.1:5000/users/add', {
                 username,
                 password,
                 email
@@ -53,9 +50,6 @@ function SignupForm(){
             setErrorMessage('User is already taken');
         }
     }
-
-
-    
 
     return(
         <>
@@ -99,9 +93,6 @@ function SignupForm(){
             />
             </div>
 
-
-
-
             <div>
             <label htmlFor="email">Email:</label>
             <input
@@ -112,9 +103,6 @@ function SignupForm(){
                 required=""
             />
             </div>
-
-
-
 
             <div>
                 <button onClick={handleSignup} type="button">

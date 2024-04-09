@@ -78,7 +78,7 @@ products = [
     }
 ]
 users = [
-    
+
     {
         "username": "Guest",
         "password": "guest1",
@@ -93,22 +93,27 @@ users = [
 
 ]
 
-@app.route('/products', methods = ['GET'])
+
+@app.route('/products', methods=['GET'])
 def get_products():
     return jsonify(products)
-@app.route('/users', methods = ['GET'])
-@app.route('/users/add', methods = ['GET'])
+
+
+@app.route('/users', methods=['GET'])
+@app.route('/users/add', methods=['GET'])
 def get_users():
     return jsonify(users)
 
+
 def load_users():
     return jsonify(products)
-    
+
+
 def add_user_to_json(user):
     users.append(user)
-        
 
-def find_user_by_username(username):# find user by their username
+
+def find_user_by_username(username):  # find user by their username
     for user in users:
         if user['username'] == username:
             return user
@@ -125,20 +130,18 @@ def add_user():
     add_user_to_json(new_user)
     return jsonify({'message': 'User added successfully'}), 201
 
+
 @app.route('/users', methods=['POST'])
 def login():
     login_data = request.json
     username = login_data['username']
     password = login_data['password']
-    print( login_data, username, password)
+    print(login_data, username, password)
     for user in users:
         if user['username'] == username and user['password'] == password:
             return jsonify({'message': 'Login successful'}), 200
     return jsonify({'error': 'Invalid username or password'}), 401
 
 
-
-
-
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug=True)

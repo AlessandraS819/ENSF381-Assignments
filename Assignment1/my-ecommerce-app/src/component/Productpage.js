@@ -7,7 +7,6 @@ import './Productpage.css';
 
 function ProductPage(){
     // state to manage items in the cart
-    //const [cart, setCart] = useState([]);
     const [cart, setCart] = useState(() => {
         const storedCart = localStorage.getItem('cart');
         return storedCart ? JSON.parse(storedCart) : [];
@@ -28,10 +27,8 @@ function ProductPage(){
           const updatedCart = [...cart];
           updatedCart[itemIndex].quantity++;
           updateCart(updatedCart);
-          //setCart(updatedCart);
         } else {
           // Item doesn't exist in cart, add it
-          //setCart([...cart, { ...product, quantity: 1 }]);
           updateCart([...cart, { ...product, quantity: 1 }]);
         }
       };
